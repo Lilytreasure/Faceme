@@ -59,7 +59,10 @@ class NewsRepository {
         val newsList = MutableLiveData<List<NewsModel>>()
 
         val call = RetrofitHelper.getInstance().create(NewsApi::class.java)
-            .getNews("in", category, BuildConfig.API_KEY) //put your api key here
+            //add the api key registered in newsapi.org
+            .getNews("us", category, BuildConfig.API_KEY) //put your api key here
+        //cast  the country names in a string and place them using a spinner
+        //allow the user to modify country data
 
         call.enqueue(object : Callback<NewsDataFromJson> {
             override fun onResponse(

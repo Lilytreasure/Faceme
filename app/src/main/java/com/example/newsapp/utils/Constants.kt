@@ -1,12 +1,13 @@
 package com.example.newsapp.utils
 
 object Constants {
-    const val HOME = "Home"
+    //later the declared items are imported in the project
+    const val HOME = "Home2"
     const val GENERAL = "general"
     const val SCIENCE = "science"
     const val HEALTH = "health"
     const val ENTERTAINMENT = "entertainment"
-    const val BUSINESS = "business"
+    const val BS = "business"
     const val TECHNOLOGY = "technology"
     const val SPORTS = "sports"
     const val NEWS_URL = "news url"

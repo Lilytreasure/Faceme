@@ -30,6 +30,8 @@ import com.jama.carouselview.enums.OffsetType
 import com.squareup.picasso.Picasso
 
 class GeneralFragment : Fragment() {
+    //variable are guaranteed use later in the code
+    //Lateinit variable are only initialised  using the var keyword and not the Val keyword
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var carouselView: CarouselView

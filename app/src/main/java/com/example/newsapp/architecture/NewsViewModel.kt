@@ -25,7 +25,7 @@ class NewsViewModel : ViewModel() {
     }
 
     fun deleteNews(context: Context, news: NewsModel) {
-        NewsRepository.deleteNews(context, news)
+       NewsRepository.deleteNews(context, news)
     }
 
     fun getNewsFromDB(context: Context): LiveData<List<NewsModel>>? {

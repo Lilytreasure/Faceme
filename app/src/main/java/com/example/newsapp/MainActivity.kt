@@ -1,5 +1,6 @@
 package com.example.newsapp
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -16,11 +17,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.adapters.FragmentAdapter
 import com.example.newsapp.architecture.NewsViewModel
-import com.example.newsapp.utils.Constants.BUSINESS
+import com.example.newsapp.utils.Constants.BS
+//import com.example.newsapp.utils.Constants.BUSINESS
 import com.example.newsapp.utils.Constants.ENTERTAINMENT
 import com.example.newsapp.utils.Constants.GENERAL
 import com.example.newsapp.utils.Constants.HEALTH
 import com.example.newsapp.utils.Constants.HOME
+//import com.example.newsapp.utils.Constants.HOME2
 import com.example.newsapp.utils.Constants.SCIENCE
 import com.example.newsapp.utils.Constants.SPORTS
 import com.example.newsapp.utils.Constants.TECHNOLOGY
@@ -32,8 +35,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
 
     // Tabs Title
+    //initially declared n the constants and later imported in the activity
     private val newsCategories = arrayOf(
-        HOME, BUSINESS,
+        HOME, BS,
         ENTERTAINMENT, SCIENCE,
         SPORTS, TECHNOLOGY, HEALTH
     )
@@ -44,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fragmentAdapter: FragmentAdapter
     private lateinit var shimmerLayout: ShimmerFrameLayout
     private var totalRequestCount = 0
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +64,8 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
 
 
+//if network is not available the visibilty of shimmer layout set to gone
+        //an error message is popped
         if (!isNetworkAvailable(applicationContext)) {
             shimmerLayout.visibility = View.GONE
             val showError: TextView = findViewById(R.id.display_error)
@@ -68,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         // Send request call for news data
         requestNews(GENERAL, generalNews)
-        requestNews(BUSINESS, businessNews)
+        requestNews(BS, businessNews)
         requestNews(ENTERTAINMENT, entertainmentNews)
         requestNews(HEALTH, healthNews)
         requestNews(SCIENCE, scienceNews)
@@ -78,6 +85,10 @@ class MainActivity : AppCompatActivity() {
         fragmentAdapter = FragmentAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = fragmentAdapter
         viewPager.visibility = View.GONE
+
+
+
+        //oncreate method ends here
 
     }
 
@@ -104,8 +115,15 @@ class MainActivity : AppCompatActivity() {
     private fun setViewPager() {
         if (!apiRequestError) {
             viewPager.visibility = View.VISIBLE
+
+            //Edit tab items title
+            //fetches the titles in the array -initially declared in the constants
+            //when the titles are casted in tablayout the show in all caps
+            //Tab titles are fetched from the declared strings in ths case
+            //else -can be manually added based on the index on the adapter like in this case
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = newsCategories[position]
+
             }.attach()
         } else {
             val showError: TextView = findViewById(R.id.display_error)
@@ -120,6 +138,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         intent = Intent(applicationContext, SavedNewsActivity::class.java)
         startActivity(intent)
         return super.onOptionsItemSelected(item)

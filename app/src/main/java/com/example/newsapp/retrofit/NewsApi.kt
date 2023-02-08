@@ -10,7 +10,10 @@ interface NewsApi {
 
 
     @GET("/v2/top-headlines")
-    fun getNews(@Query("country") country : String, @Query("category") category : String?, @Query("apiKey") key : String) : Call<NewsDataFromJson>
+    fun getNews(@Query("country") country : String,
+                @Query("category") category : String?,
+                @Query("apiKey") key : String) : Call<NewsDataFromJson>
+               // @Query("apiKey") key : String) : List<NewsDataFromJson>
 
 
     // for global

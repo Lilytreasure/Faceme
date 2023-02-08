@@ -109,6 +109,9 @@ class SavedNewsActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
+
+        //main oncreate method ends here
+
     }
 
     @ColorInt
