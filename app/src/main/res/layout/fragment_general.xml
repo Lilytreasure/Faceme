@@ -28,7 +28,7 @@
             app:enableSnapping="true"
             app:scaleOnScroll="false"
             app:setAutoPlay="true"
-            app:setAutoPlayDelay="3000"
+            app:setAutoPlayDelay="5000"
             app:carouselOffset="center"
             app:indicatorAnimationType="drop"
             app:indicatorRadius="5"

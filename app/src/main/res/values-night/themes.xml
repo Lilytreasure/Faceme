@@ -4,7 +4,7 @@
 
         <item name="android:windowBackground">@color/black_for_bg</item>
 
-        <item name="colorPrimary">@color/black_for_bg</item>
+        <item name="colorPrimary">@color/relative_bg</item>
         <item name="colorPrimaryDark">@color/black_for_bg</item>
         <item name="colorPrimaryVariant">@color/grey_black</item>
         <item name="colorOnPrimary">@color/white</item>

@@ -28,6 +28,7 @@ import com.jama.carouselview.CarouselView
 import com.jama.carouselview.enums.IndicatorAnimationType
 import com.jama.carouselview.enums.OffsetType
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.delay
 
 class GeneralFragment : Fragment() {
     //variable are guaranteed use later in the code

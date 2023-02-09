@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewsApp</string>
+    <string name="app_name">Habari</string>
     <string name="top_headlines">Top Headlines</string>
     <string name="browse">Browse</string>
     <string name="share">Share</string>

@@ -12,8 +12,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        app:elevation="0dp">
+        android:background="@color/cardview_dark_background"
+        app:elevation="0dp"
+        android:backgroundTint="@color/cardview_dark_background">
 
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -22,18 +23,19 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways"
             app:title="@string/app_name"
-            app:titleTextColor="?attr/colorOnPrimary" />
+            app:titleTextColor="@color/white" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@color/cardview_dark_background"
             app:tabGravity="center"
             app:tabIndicatorColor="@color/deep_sky_blue"
             app:tabIndicatorFullWidth="false"
             app:tabMaxWidth="0dp"
             app:tabMode="scrollable"
+            app:tabTextColor="@color/white"
             app:tabSelectedTextColor="@color/deep_sky_blue" />
 
 

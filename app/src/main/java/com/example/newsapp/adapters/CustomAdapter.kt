@@ -55,6 +55,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
         holder.headLine.text = newsData.headLine
         val time: String? = newsData.time
         val imgUrl = newsData.image
+        //Show an error  image  when the news items to don have an item || an error occurs loading the image
 
         if (imgUrl.isNullOrEmpty()) {
             Picasso.get()

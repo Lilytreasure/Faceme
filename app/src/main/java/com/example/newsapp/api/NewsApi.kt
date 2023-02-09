@@ -7,6 +7,9 @@ import retrofit2.http.Query
 interface NewsApi {
 
     //https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=your_api_key
+    //used cal to fetch data from the api
+    //Response would also work
+
 
 
     @GET("/v2/top-headlines")

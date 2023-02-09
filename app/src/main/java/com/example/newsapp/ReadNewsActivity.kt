@@ -87,6 +87,8 @@ class ReadNewsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     override fun onInit(status: Int) {
 
+        //Text to speech  feature
+
         if (status == TextToSpeech.SUCCESS) {
             val result = tts.setLanguage(Locale.ENGLISH)
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {

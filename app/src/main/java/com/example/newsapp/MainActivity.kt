@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
 
     // Tabs Title
     //initially declared n the constants and later imported in the activity
+    //Modify the layout  of the nes views to emulate Twitter layout
+    //Modify the nes container
+
+
+
     private val newsCategories = arrayOf(
         HOME, BS,
         ENTERTAINMENT, SCIENCE,
