@@ -7,9 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import com.example.newsapp.BuildConfig
 import com.example.newsapp.MainActivity
 import com.example.newsapp.NewsModel
-import com.example.newsapp.retrofit.NewsApi
-import com.example.newsapp.retrofit.NewsDataFromJson
-import com.example.newsapp.retrofit.RetrofitHelper
+import com.example.newsapp.api.NewsApi
+import com.example.newsapp.api.NewsDataFromJson
+import com.example.newsapp.api.RetrofitHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch

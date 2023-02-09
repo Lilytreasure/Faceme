@@ -1,4 +1,4 @@
-package com.example.newsapp.retrofit
+package com.example.newsapp.api
 
 data class Article(
     val author: String,

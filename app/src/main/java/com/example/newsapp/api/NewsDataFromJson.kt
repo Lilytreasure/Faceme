@@ -1,4 +1,4 @@
-package com.example.newsapp.retrofit
+package com.example.newsapp.api
 
 data class NewsDataFromJson(
     val articles: List<Article>,

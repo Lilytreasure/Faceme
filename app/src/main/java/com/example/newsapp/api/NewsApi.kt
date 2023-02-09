@@ -1,4 +1,4 @@
-package com.example.newsapp.retrofit
+package com.example.newsapp.api
 
 import retrofit2.Call
 import retrofit2.http.GET
