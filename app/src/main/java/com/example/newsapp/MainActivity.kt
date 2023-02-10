@@ -143,10 +143,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.savednews_menu -> {
+                intent = Intent(applicationContext, SavedNewsActivity::class.java)
+                startActivity(intent)
+                return super.onOptionsItemSelected(item)
 
-        intent = Intent(applicationContext, SavedNewsActivity::class.java)
-        startActivity(intent)
-        return super.onOptionsItemSelected(item)
+            }
+            R.id.messageic->{
+                intent = Intent(applicationContext, MessagesActivity::class.java)
+                startActivity(intent)
+                return super.onOptionsItemSelected(item)
+
+            }
+            R.id.menuBar->{
+                intent = Intent(applicationContext, UserProfile::class.java)
+                startActivity(intent)
+                return super.onOptionsItemSelected(item)
+
+            }
+        }
+
+        return true
     }
 
     // Check internet connection

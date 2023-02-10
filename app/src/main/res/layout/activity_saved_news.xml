@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/darker_grey"
         app:elevation="0dp">
 
 
@@ -21,7 +21,7 @@
             android:layout_height="?attr/actionBarSize"
             app:title="Saved News"
             app:titleCentered="true"
-            app:titleTextColor="?attr/colorOnPrimary" />
+            app:titleTextColor="@color/white" />
 
 
     </com.google.android.material.appbar.AppBarLayout>

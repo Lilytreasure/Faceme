@@ -17,6 +17,17 @@
     <color name="custom">#298932</color>
     <color name="customRed">#ed4f3f</color>
     <color name="customg">#d3cbbf</color>
+<!--    <color name="darker_grey">#A9A9A9</color>-->
+    <color name="orange">#ff6600</color>
+
+    <color name="darker_grey">#424242</color>
+
+
+
+    <color name="red">#FF0000</color>
+    <color name="purple">#382c52</color>
+
+
 
 
 </resources>

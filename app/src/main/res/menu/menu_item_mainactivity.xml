@@ -2,6 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:icon="@drawable/ic_mesageicon_message_24"
+        android:title="mesageicon"
+        app:showAsAction="always"
+        android:id="@+id/messageic"/>
+    <item
+        android:icon="@drawable/ic_baseline_notifications_none_24"
+        app:showAsAction="always"
+        android:title="Saved News"
+        android:id="@+id/notifyIcon"/>
 
 
 
@@ -10,6 +20,13 @@
         app:showAsAction="always"
         android:title="Saved News"
         android:id="@+id/savednews_menu"/>
+    <item
+        android:icon="@drawable/ic_menubar_menu_24"
+        app:showAsAction="always"
+        android:title="Saved News"
+        android:id="@+id/menuBar"/>
+
+
 
 
 
