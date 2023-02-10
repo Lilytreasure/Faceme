@@ -12,6 +12,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="5dp">
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_toEndOf="@+id/news_image"
+            android:maxLines="4"
+            android:textColor="@color/white"
+            android:text="@string/news_placeholder"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/news_publication_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:drawableStartCompat="@drawable/ic_baseline_access_time_24"
+            android:layout_gravity="center" />
+
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/news_image"
@@ -31,27 +52,96 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/news_publication_time"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            app:drawableStartCompat="@drawable/ic_baseline_access_time_24"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/news_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:layout_toEndOf="@+id/news_image"
-            android:maxLines="4"
-            android:textColor="@color/white"
-            android:text="@string/news_placeholder"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/likeBTn"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/likebg"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/like4" />
+
+                <TextView
+                    android:id="@+id/likeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/grey_black"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ComentBTn"
+                android:layout_marginStart="20dp"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/likebg"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/like4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/grey_black" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ShareBTn"
+                android:layout_marginStart="20dp"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/likebg"
+                android:clickable="true"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/share2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/grey_black" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
 
 
 

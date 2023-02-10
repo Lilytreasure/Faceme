@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.NewsModel
@@ -47,6 +48,11 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         context = parent.context
         return ViewHolder(view, mClickListener, mLongClickListener)
+
+
+
+
+        //likebtn
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -83,6 +89,15 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
             holder.newsPublicationTime.text = hoursAgo
         }
 
+        var likes=0
+
+        holder.likeBtn.setOnClickListener {
+            likes++
+            holder.likeText.text= likes.toString()
+
+        }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -97,6 +112,8 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
         val image: ImageView = itemView.findViewById(R.id.img)
         val headLine: TextView = itemView.findViewById(R.id.news_title)
         val newsPublicationTime: TextView = itemView.findViewById(R.id.news_publication_time)
+        val likeBtn:LinearLayout=itemView.findViewById(R.id.likeBTn)
+        val likeText:TextView=itemView.findViewById(R.id.likeText)
 
         init {
             ItemView.setOnClickListener {

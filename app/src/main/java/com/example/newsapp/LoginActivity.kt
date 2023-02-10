@@ -8,6 +8,7 @@ class LoginActivity : AppCompatActivity() {
     // Google auth
     //Save the user login state
     //Log out the user when   they request to log out
+    //Google auth --- use-prompt user  for email password
 
 
 
