@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">Habari</string>
-    <string name="top_headlines">Top Headlines</string>
     <string name="browse">Browse</string>
     <string name="share">Share</string>
     <string name="save">Read later</string>
     <string name="listen">Listen</string>
     <string name="internet_warming">Check your Internet Connection and Try Again!</string>
     <string name="news_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="news_headlines">News Headlines</string>
+    <string name="welcome_to_habari">Welcome to Habari</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_firstname">Enter Firstname</string>
+    <string name="enter_username_email">Enter Username/Email</string>
 
 </resources>

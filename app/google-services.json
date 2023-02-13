@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "976343820157",
+    "project_id": "habari-eb69a",
+    "storage_bucket": "habari-eb69a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976343820157:android:3c08f67e26b2105e7cce14",
+        "android_client_info": {
+          "package_name": "com.example.newsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976343820157-j5j9jd7uj6vrqjoe728qs0i5r0e5bqbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9LjYrPR3p18wWP05mcGBL82J4hexgiyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976343820157-j5j9jd7uj6vrqjoe728qs0i5r0e5bqbr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

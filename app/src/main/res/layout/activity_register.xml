@@ -32,7 +32,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:hint="Enter Firstname"
+                android:hint="@string/enter_firstname"
+                android:textColorHint="@color/relative_bg"
                 android:layout_margin="10dp"
                 android:background="@drawable/bg">
                 <com.google.android.material.textfield.TextInputEditText
@@ -51,7 +52,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:hint="Enter Username/Email"
+                android:hint="@string/enter_username_email"
+                android:textColorHint="@color/relative_bg"
                 android:layout_margin="10dp"
                 android:background="@drawable/bg">
                 <com.google.android.material.textfield.TextInputEditText
@@ -73,6 +75,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_margin="10dp"
                 android:hint="Enter password"
+                android:textColorHint="@color/relative_bg"
                 android:background="@drawable/bg"
                 app:endIconMode="password_toggle"
                 style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">

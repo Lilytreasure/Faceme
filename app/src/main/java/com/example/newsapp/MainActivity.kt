@@ -1,6 +1,6 @@
 package com.example.newsapp
 
-import android.app.Dialog
+
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
