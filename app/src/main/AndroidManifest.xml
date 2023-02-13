@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsApp">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserProfile"
             android:exported="false" />
         <activity

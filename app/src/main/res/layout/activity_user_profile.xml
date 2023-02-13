@@ -460,6 +460,7 @@
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/LogoutCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/darker_grey"
@@ -485,14 +486,6 @@
                     </TextView>
 
 
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_morearrow"
-                        android:layout_gravity="end">
-
-                    </androidx.appcompat.widget.AppCompatImageButton>
 
                 </androidx.cardview.widget.CardView>
 

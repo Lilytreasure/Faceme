@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="LoginActivity"
+    tools:context=".RegisterActivity"
     android:background="@color/darker_grey">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -20,21 +20,38 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome to Habari"
+                android:text="Fill in the Fields to Register to Habari"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="70dp"
                 android:layout_gravity="center"
                 android:gravity="center">
 
             </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Enter Firstname"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black_for_bg"
+                    android:background="#00000000">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:hint="Enter Email/Username"
+                android:hint="Enter Username/Email"
                 android:layout_margin="10dp"
                 android:background="@drawable/bg">
                 <com.google.android.material.textfield.TextInputEditText
@@ -69,23 +86,13 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Login"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:background="@drawable/bg">
-
-            </androidx.appcompat.widget.AppCompatButton>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/NewUserRegisterBtn"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="New User?  Register"
+                android:text="REGISTER"
+                android:layout_marginBottom="30dp"
                 android:textAllCaps="false"
                 android:gravity="center"
                 android:layout_gravity="center"
