@@ -1,6 +1,5 @@
 package com.example.newsapp
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -8,10 +7,10 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -33,6 +32,7 @@ import com.example.newsapp.utils.Constants.TOTAL_NEWS_TAB
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var shimmerLayout: ShimmerFrameLayout
     private var totalRequestCount = 0
     private  lateinit var  txtNet: TextView
+    private lateinit var showError: TextView
 
     
 
@@ -75,28 +76,46 @@ class MainActivity : AppCompatActivity() {
 
        txtNet=findViewById(R.id.txtNet)
 
+        showError=findViewById(R.id.display_error)
+
         viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
 
 
-//if network is not available the visibilty of shimmer layout set to gone
-        //an error message is popped
-        if (!isNetworkAvailable(applicationContext)) {
+        //call the function every second
+        val handler = Handler()
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+
+                //Call your function here
+                isNetworkAvailable(this@MainActivity)
+                if (!isNetworkAvailable(applicationContext)){
+                    val offline="offline"
+                    txtNet.text=offline
+                    txtNet.setTextColor(Color.parseColor("#ed4f3f"))
+
+
+                }else{
+                    val online="online"
+                    txtNet.text=online
+                    txtNet.setTextColor(Color.parseColor("#298932"))
+
+                }
+
+
+                handler.postDelayed(this, 1000)//1 sec delay
+            }
+        }, 0)
+
+
+        if (!isNetworkAvailable(applicationContext)){
+
             shimmerLayout.visibility = View.GONE
-            val showError: TextView = findViewById(R.id.display_error)
             showError.text = getString(R.string.internet_warming)
             showError.visibility = View.VISIBLE
-            val offline="offline"
-            txtNet.text=offline
-            txtNet.setTextColor(Color.parseColor("#ed4f3f"))
-
-
-
-
-
 
         }
 
-        // Send request call for news data
+
         requestNews(GENERAL, generalNews)
         requestNews(BS, businessNews)
         requestNews(ENTERTAINMENT, entertainmentNews)
