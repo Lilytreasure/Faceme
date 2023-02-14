@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         textViewSplash.alpha=0f
         textViewSplash.animate().setDuration(3000).alpha(1f).withEndAction {
 
-            val i = Intent(this , MainActivity::class.java)
+            val i = Intent(this , LoginActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_in)
             finish()

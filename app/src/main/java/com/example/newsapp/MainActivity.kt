@@ -1,8 +1,9 @@
 package com.example.newsapp
 
-
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -53,7 +55,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fragmentAdapter: FragmentAdapter
     private lateinit var shimmerLayout: ShimmerFrameLayout
     private var totalRequestCount = 0
+    private  lateinit var  txtNet: TextView
+
     
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +71,10 @@ class MainActivity : AppCompatActivity() {
 
         tabLayout = findViewById(R.id.tab_layout)
         viewPager = findViewById(R.id.view_pager)
-        shimmerLayout = findViewById(R.id.shimmer_layout)
+        shimmerLayout=findViewById(R.id.shimmer_layout)
+
+       txtNet=findViewById(R.id.txtNet)
+
         viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
 
 
@@ -76,6 +85,15 @@ class MainActivity : AppCompatActivity() {
             val showError: TextView = findViewById(R.id.display_error)
             showError.text = getString(R.string.internet_warming)
             showError.visibility = View.VISIBLE
+            val offline="offline"
+            txtNet.text=offline
+            txtNet.setTextColor(Color.parseColor("#ed4f3f"))
+
+
+
+
+
+
         }
 
         // Send request call for news data

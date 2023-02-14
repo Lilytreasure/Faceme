@@ -10,6 +10,7 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+    // Todo ---write unit tests to evaluate the  performance of the  application
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)

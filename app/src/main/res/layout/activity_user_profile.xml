@@ -63,35 +63,30 @@
                     android:backgroundTint="@color/darker_grey"
                     android:background="@color/darker_grey"
                     android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:focusable="true">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
+                    <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
-                        android:src="@drawable/ic_person"
+                        android:drawableLeft="@drawable/ic_person"
+                        android:text="Name"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
                         android:backgroundTint="@color/cardview_dark_background">
 
-                    </androidx.appcompat.widget.AppCompatImageButton>
+                    </androidx.appcompat.widget.AppCompatButton>
+
                     <TextView
+                        android:id="@+id/TxtNameHolder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="personal details"
-                        android:layout_marginRight="70dp"
+                        android:layout_marginEnd="5dp"
                         android:textColor="@color/white">
 
                     </TextView>
-
-
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_morearrow"
-                        android:layout_gravity="end">
-
-                    </androidx.appcompat.widget.AppCompatImageButton>
 
                 </androidx.cardview.widget.CardView>
 

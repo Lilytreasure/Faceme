@@ -23,7 +23,19 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways"
             app:title="@string/app_name"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/white" >
+            <TextView
+                android:id="@+id/txtNet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Online"
+                android:textColor="@color/custom"
+                android:layout_marginStart="20dp">
+
+            </TextView>
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
@@ -31,10 +43,10 @@
             android:layout_height="wrap_content"
             android:background="@color/cardview_dark_background"
             app:tabGravity="center"
+            app:tabMode="scrollable"
             app:tabIndicatorColor="@color/deep_sky_blue"
             app:tabIndicatorFullWidth="false"
             app:tabMaxWidth="0dp"
-            app:tabMode="scrollable"
             app:tabTextColor="@color/white"
             app:tabSelectedTextColor="@color/deep_sky_blue" />
 

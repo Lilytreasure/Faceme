@@ -37,6 +37,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/bg">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/FirstName"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -57,6 +58,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/bg">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TxtUsername"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -80,6 +82,7 @@
                 app:endIconMode="password_toggle"
                 style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TxtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="@color/black_for_bg"
@@ -91,6 +94,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/NewUserRegisterBtn"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

@@ -65,7 +65,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
         if (imgUrl.isNullOrEmpty()) {
             Picasso.get()
-                .load( R.drawable.samplenews)
+                .load( R.drawable.nopic)
                 .fit()
                 .centerCrop()
                 .into(holder.image)
@@ -74,7 +74,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
                 .load(imgUrl)
                 .fit()
                 .centerCrop()
-                .error(R.drawable.samplenews)
+                .error(R.drawable.nopic)
                 .into(holder.image)
         }
 
