@@ -107,6 +107,9 @@ class MainActivity : AppCompatActivity() {
         }, 0)
 
 
+        ///log error to the user  when internet connection is  not available
+
+
         if (!isNetworkAvailable(applicationContext)){
 
             shimmerLayout.visibility = View.GONE

@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MessagesActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/BarMessages"
+        android:background="@color/darker_grey"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="139dp"
-        android:layout_marginTop="190dp"
-        android:layout_marginEnd="214dp"
-        android:layout_marginBottom="522dp"
-        android:text="Messages Activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:titleTextColor="@color/white"
+        app:title="Messages">
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/BarMessages"
+        android:id="@+id/recyclerMessages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+</RelativeLayout>

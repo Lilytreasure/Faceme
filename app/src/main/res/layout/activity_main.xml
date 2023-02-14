@@ -49,19 +49,23 @@
             app:tabMaxWidth="0dp"
             app:tabTextColor="@color/white"
             app:tabSelectedTextColor="@color/deep_sky_blue" />
+        <TextView
+            android:id="@+id/display_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:text="@string/internet_warming"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textSize="15sp"
+            android:background="@color/customRed"
+            tools:visibility="visible">
+        </TextView>
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/display_error"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="200dp"
-        android:textSize="20sp"
-        android:visibility="gone" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
