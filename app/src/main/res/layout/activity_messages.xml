@@ -13,7 +13,6 @@
         app:titleTextColor="@color/white"
         app:title="Messages">
 
-
     </com.google.android.material.appbar.MaterialToolbar>
 
 
@@ -22,12 +21,9 @@
         android:layout_below="@+id/BarMessages"
         android:id="@+id/recyclerMessages"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:listitem="@layout/users_contacts">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-
-
-
 
 </RelativeLayout>

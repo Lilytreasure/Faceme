@@ -2,6 +2,9 @@ package com.example.newsapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
+import com.example.newsapp.adapters.ContactsAdapter
+import com.example.newsapp.firebase.User
 
 class MessagesActivity : AppCompatActivity() {
     //add a container to hold the user contacts
@@ -10,6 +13,9 @@ class MessagesActivity : AppCompatActivity() {
     //for a successful sent message add right mark
     //on error sending the message --log an error on the message that has not been sent
     //Allow the user to resend the messages that has failed
+    private lateinit var  recyclerMessages: RecyclerView
+    private lateinit var userList: ArrayList<User>
+    private lateinit var adapter: ContactsAdapter
 
 
 
@@ -17,6 +23,21 @@ class MessagesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_messages)
 
+        recyclerMessages=findViewById(R.id.recyclerMessages)
 
+
+        userList=ArrayList()
+        adapter=ContactsAdapter(this,userList)
+
+
+
+
+
+
+
+
+
+//end of OnCreate method
     }
+
 }

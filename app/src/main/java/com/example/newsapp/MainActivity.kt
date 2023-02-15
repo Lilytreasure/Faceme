@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.adapters.FragmentAdapter
 import com.example.newsapp.architecture.NewsViewModel
@@ -57,8 +58,7 @@ class MainActivity : AppCompatActivity() {
     private var totalRequestCount = 0
     private  lateinit var  txtNet: TextView
     private lateinit var showError: TextView
-
-    
+    private lateinit var PullRefresher: SwipeRefreshLayout
 
 
 
@@ -79,6 +79,9 @@ class MainActivity : AppCompatActivity() {
         showError=findViewById(R.id.display_error)
 
         viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
+
+        //pull to refresh the layout
+        PullRefresher=findViewById(R.id.PullRefresher)
 
 
         //call the function every second
@@ -116,6 +119,21 @@ class MainActivity : AppCompatActivity() {
             showError.text = getString(R.string.internet_warming)
             showError.visibility = View.VISIBLE
 
+        }
+
+        //pull to refresh
+
+        PullRefresher.setOnRefreshListener {
+            PullRefresher.isRefreshing = false
+            requestNews(GENERAL, generalNews)
+            requestNews(BS, businessNews)
+            requestNews(ENTERTAINMENT, entertainmentNews)
+            requestNews(HEALTH, healthNews)
+            requestNews(SCIENCE, scienceNews)
+            requestNews(SPORTS, sportsNews)
+            requestNews(TECHNOLOGY, techNews)
+            fragmentAdapter = FragmentAdapter(supportFragmentManager, lifecycle)
+            viewPager.adapter = fragmentAdapter
         }
 
 

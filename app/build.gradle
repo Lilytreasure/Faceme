@@ -22,7 +22,7 @@ android {
 //        Please ensure you have a valid API KEY for https://newsapi.org/
 //        to use this app
 //        A valid key will need to be entered in gradle.properties file
-        buildConfigField("String", "API_KEY", "\"65afc9f134de402e93905639c0098cfc\"")
+        buildConfigField("String", "API_KEY", "\"5a3e054de1834138a2fbc4a75ee69053\"")
         //65afc9f134de402e93905639c0098cfc-mine
         //initial-5a3e054de1834138a2fbc4a75ee69053
 
@@ -59,6 +59,7 @@ android {
 
 dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -90,6 +91,9 @@ dependencies {
     //firebase
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //pull to refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
 
 

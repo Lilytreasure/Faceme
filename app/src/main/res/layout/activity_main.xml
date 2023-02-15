@@ -6,10 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+    android:fitsSystemWindows="true">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/PullRefresher">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/TopBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/cardview_dark_background"
@@ -33,7 +41,6 @@
                 android:layout_marginStart="20dp">
 
             </TextView>
-
 
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -67,27 +74,31 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
+
     <androidx.viewpager2.widget.ViewPager2
+        android:layout_below="@id/TopBar"
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:alpha="0.4"
-        android:animateLayoutChanges="true"
-        android:animationCache="true"
-        android:clipChildren="true"
-        app:shimmer_dropoff="@integer/material_motion_duration_medium_1"
-        app:shimmer_repeat_mode="restart"
-        app:shimmer_shape="linear">
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="100dp"
+                android:alpha="0.4"
+                android:animateLayoutChanges="true"
+                android:animationCache="true"
+                android:clipChildren="true"
+                app:shimmer_dropoff="@integer/material_motion_duration_medium_1"
+                app:shimmer_repeat_mode="restart"
+                app:shimmer_shape="linear">
 
-        <include layout="@layout/list_item_for_shimmer" />
+                <include layout="@layout/list_item_for_shimmer" />
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
