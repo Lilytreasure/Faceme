@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class UserProfile : AppCompatActivity() {
@@ -15,6 +17,7 @@ class UserProfile : AppCompatActivity() {
     private lateinit var  LogoutCard: CardView
     private lateinit var mAuth: FirebaseAuth
     private  lateinit var TxtNameHolder: TextView
+    private lateinit var mDbRef: DatabaseReference
 
 
 
@@ -24,6 +27,7 @@ class UserProfile : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
 
         mAuth=FirebaseAuth.getInstance()
+        mDbRef= FirebaseDatabase.getInstance().getReference()
 
 
 
@@ -31,7 +35,8 @@ class UserProfile : AppCompatActivity() {
         TxtNameHolder=findViewById(R.id.TxtNameHolder)
 
         //set the name of the logged user in the textholder
-        TxtNameHolder.text= mAuth.currentUser?.email.toString()
+       TxtNameHolder.text= mAuth.currentUser?.email.toString()
+
 
 
         LogoutCard.setOnClickListener {
@@ -41,12 +46,6 @@ class UserProfile : AppCompatActivity() {
             finish()
 
         }
-
-
-
-
-
-
 
 
 

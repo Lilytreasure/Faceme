@@ -84,7 +84,6 @@ class RegisterActivity : AppCompatActivity() {
                     //add a hidden textview to populate when error occurs
                     Toast.makeText(this, "An error occurred", Toast.LENGTH_SHORT).show()
 
-
                 }
             }
 

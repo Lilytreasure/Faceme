@@ -35,6 +35,7 @@ class BusinessFragment : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         val adapter = CustomAdapter(newsData)
         recyclerView.adapter = adapter
+       // adapter.notifyDataSetChanged()
 
         adapter.setOnItemClickListener(object : CustomAdapter.OnItemClickListener {
 

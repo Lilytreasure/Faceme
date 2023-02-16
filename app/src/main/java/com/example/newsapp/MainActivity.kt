@@ -125,15 +125,16 @@ class MainActivity : AppCompatActivity() {
 
         PullRefresher.setOnRefreshListener {
             PullRefresher.isRefreshing = false
-            requestNews(GENERAL, generalNews)
-            requestNews(BS, businessNews)
-            requestNews(ENTERTAINMENT, entertainmentNews)
-            requestNews(HEALTH, healthNews)
-            requestNews(SCIENCE, scienceNews)
-            requestNews(SPORTS, sportsNews)
-            requestNews(TECHNOLOGY, techNews)
-            fragmentAdapter = FragmentAdapter(supportFragmentManager, lifecycle)
-            viewPager.adapter = fragmentAdapter
+
+            //pull  to refresh the layout and clear the view to avoid duplication
+
+
+
+
+
+
+
+
         }
 
 
@@ -148,6 +149,7 @@ class MainActivity : AppCompatActivity() {
         fragmentAdapter = FragmentAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = fragmentAdapter
         viewPager.visibility = View.GONE
+
 
 
 

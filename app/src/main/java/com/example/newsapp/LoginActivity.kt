@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 
 class LoginActivity : AppCompatActivity() {
     //add firebase auth
@@ -22,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var mAuth:FirebaseAuth
     private lateinit var BtnLogin: Button
     private  lateinit var dialog: ProgressDialog
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

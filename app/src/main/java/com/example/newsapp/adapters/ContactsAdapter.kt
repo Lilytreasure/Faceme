@@ -4,15 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsapp.LoginActivity
 import com.example.newsapp.R
 import com.example.newsapp.firebase.User
 
 class ContactsAdapter(val context: Context,val  userList: ArrayList<User>):RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder>() {
-
-
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
@@ -27,6 +28,12 @@ class ContactsAdapter(val context: Context,val  userList: ArrayList<User>):Recyc
         val currentUser=userList[position]
         holder.textName.text=currentUser.name
 
+        holder.textName.setOnClickListener {
+            //launch  the chats activity to send messages to the selected user
+
+
+        }
+
 
     }
 
@@ -35,11 +42,10 @@ class ContactsAdapter(val context: Context,val  userList: ArrayList<User>):Recyc
     }
 
 
-
-
     class ContactsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         //map the container in  the user contacts
-        val textName=itemView.findViewById<TextView>(R.id.textContact)
+        var textName=itemView.findViewById<Button>(R.id.textContact)
+
 
     }
 
