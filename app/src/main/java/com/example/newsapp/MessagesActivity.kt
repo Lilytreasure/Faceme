@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.adapters.ContactsAdapter
-import com.example.newsapp.firebase.User
+import com.example.newsapp.firebase.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -18,8 +18,8 @@ class MessagesActivity : AppCompatActivity() {
     //Allow the user to resend the messages that has failed
     //add a notifire that  shows the number of  the unread messages
     //once the messages are read the notification counter is decremented
-
-
+    //catch the user contacts and update when new item is added
+    //reference the old items with  the new item and only update when new items are found
 
 
     private lateinit var  recyclerMessages: RecyclerView

@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity() {
     //Modify the layout  of the nes views to emulate Twitter layout
     //Modify the nes container
 
+    //Todo --adding  the appliacation crash analytics that will  collect  crash data  in firebase
+
 
 
     private val newsCategories = arrayOf(

@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/textContainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Type message"
@@ -29,6 +30,7 @@
         </androidx.appcompat.widget.AppCompatEditText>
 
         <ImageButton
+            android:id="@+id/SendBTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_morearrow2">

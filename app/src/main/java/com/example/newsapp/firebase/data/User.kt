@@ -1,4 +1,4 @@
-package com.example.newsapp.firebase
+package com.example.newsapp.firebase.data
 
 class User {
 
