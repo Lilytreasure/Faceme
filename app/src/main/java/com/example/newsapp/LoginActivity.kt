@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+
 
 class LoginActivity : AppCompatActivity() {
     //add firebase auth
@@ -34,7 +34,6 @@ class LoginActivity : AppCompatActivity() {
         TxtUsername=findViewById(R.id.TxtUsername)
         TxtPassword=findViewById(R.id.TxtPassword)
         BtnLogin=findViewById(R.id.BtnLogin)
-
 
 
         //create an instance of firebase auth
@@ -70,8 +69,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
-
-
 
 
 

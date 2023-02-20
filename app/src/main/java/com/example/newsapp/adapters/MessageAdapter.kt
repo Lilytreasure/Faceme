@@ -42,6 +42,10 @@ class MessageAdapter(val context: Context,val messageList: ArrayList<Message>) :
 
         //use the if  block to sort out  between the holders
         //ie -- sent  and the received holder
+        //map the state of the message
+        //either sent  or not sent if fails during send
+
+
         val currentMessage=messageList[position]
 
         if (holder.javaClass==sentViewholder::class.java){
@@ -69,6 +73,12 @@ class MessageAdapter(val context: Context,val messageList: ArrayList<Message>) :
     override fun getItemViewType(position: Int): Int {
 
         val currentMessage=messageList[position]
+        //if the message id corresponds to the currentUserId then the message is identified as sent
+        //else of the message has a different id -it is marked as received
+
+
+
+
 
         if (FirebaseAuth.getInstance().currentUser?.uid.equals(currentMessage.senderId)){
             return ITEM_SENT

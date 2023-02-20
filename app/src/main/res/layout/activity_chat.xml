@@ -5,15 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerChats"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/MessageBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/userMsgName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello user"
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/ic_person"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:drawablePadding="40dp">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/MessageBar"
+        android:layout_above="@+id/BottomLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerChats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </androidx.core.widget.NestedScrollView>
 
 
     <LinearLayout
+        android:id="@+id/BottomLayout"
         android:orientation="horizontal"
        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"

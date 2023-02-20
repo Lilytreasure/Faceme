@@ -1,11 +1,14 @@
 package com.example.newsapp.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsapp.ChatActivity
 import com.example.newsapp.R
 import com.example.newsapp.firebase.data.User
 
@@ -25,7 +28,15 @@ class ContactsAdapter(val context: Context,val  userList: ArrayList<User>):Recyc
         holder.textName.text=currentUser.name
 
         holder.textName.setOnClickListener {
-            //launch  the chats activity to send messages to the selected user
+            //This will reference to the populate registered user accounts from firebase
+           // Toast.makeText(context, "contact clicked", Toast.LENGTH_SHORT).show()
+
+            //start the chat activity and take current username and the uid of the  current user
+
+            val intent=Intent(context,ChatActivity::class.java)
+            intent.putExtra("name",currentUser.name)
+            intent.putExtra("uid",currentUser.uid)
+            context.startActivity(intent)
 
 
         }
