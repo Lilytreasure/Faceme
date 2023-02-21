@@ -46,6 +46,18 @@ class MainActivity : AppCompatActivity() {
 
     //Todo --adding  the appliacation crash analytics that will  collect  crash data  in firebase
     //add  a notification badge to show whwm new items  arrrive-- ie news feed or new messages
+    //show notification badges that populate notifications
+    //Notify the user when a new version of the  application  has been released
+    //write  unit tests to test the ui and  the vital operations
+    //show a notification  when the user is online- and when they are not --
+    //when the user is logged in the application and the application is currently in running state
+    //show a notification when  the user is typing the message
+
+    //when  user is typing message module--add  a listener to the text container
+    //when  the user makes  an input - the recipient receives a  typing  notification
+    //allow user to modify the profile image
+
+
 
 
 
@@ -170,10 +182,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
         //badge messages
-        val count=40
+        val count=2
         imageBadgeView=findViewById(R.id.cart_menu_icon)
         imageBadgeView.badgeValue=count
 
@@ -198,9 +208,6 @@ class MainActivity : AppCompatActivity() {
             imageBadgeViewNotify.badgeValue=0
 
         }
-
-
-
 
 
 

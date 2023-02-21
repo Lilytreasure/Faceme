@@ -3,25 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@color/darker_grey"
+        android:id="@+id/ContactContainer">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:drawableStart="@drawable/ic_person"
-        android:id="@+id/textContact"
-        android:layout_width="match_parent"
-        android:gravity="left"
-        android:drawablePadding="30dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Dennis Wanja"
-        android:backgroundTint="@color/darker_grey"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:textAllCaps="false" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/picHolder"
+    android:src="@drawable/ic_person"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp"
+        app:strokeWidth="5dp"
+        app:strokeColor="@android:color/darker_gray"
+        app:shapeAppearanceOverlay="@style/circleImageView" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:background="@color/customRed"
+            android:backgroundTint="@color/customRed"
+            app:strokeWidth="5dp"
+            android:padding="5dp"
+            app:strokeColor="@color/customRed"
+            android:layout_gravity="top">
+
+        </com.google.android.material.imageview.ShapeableImageView>
+        <TextView
+            android:id="@+id/textContact"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Demmis Wanja"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center">
+
+        </TextView>
+
     </LinearLayout>
 </RelativeLayout>

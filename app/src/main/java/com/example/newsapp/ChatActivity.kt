@@ -90,8 +90,6 @@ class ChatActivity : AppCompatActivity() {
 
 
 
-
-
         messageList= ArrayList()
 
         val data = ArrayList<Message>()
@@ -116,6 +114,7 @@ class ChatActivity : AppCompatActivity() {
                     //clear the data list to avoid duplication
 
 
+
                     data.clear()
 
                     for (postSnapshot in snapshot.children){
@@ -128,6 +127,9 @@ class ChatActivity : AppCompatActivity() {
                         //store the number of the sent messages an show the count in badge
                         //only show notifications on the update user id chats
                         //updates are only showed when specific uid has received an update
+                        //the  count is populated in the receiver uid
+                        //from the sender end the count is not incremented
+
 
 
                     }
