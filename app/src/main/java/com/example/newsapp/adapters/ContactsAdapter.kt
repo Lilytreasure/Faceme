@@ -27,6 +27,7 @@ class ContactsAdapter(val context: Context,val  userList: ArrayList<User>):Recyc
         val currentUser=userList[position]
         holder.textName.text=currentUser.name
 
+
         holder.textName.setOnClickListener {
             //This will reference to the populate registered user accounts from firebase
            // Toast.makeText(context, "contact clicked", Toast.LENGTH_SHORT).show()

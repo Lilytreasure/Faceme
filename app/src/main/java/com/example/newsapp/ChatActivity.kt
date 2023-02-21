@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.adapters.MessageAdapter
 import com.example.newsapp.firebase.data.Message
-import com.example.newsapp.firebase.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import ru.nikartm.support.ImageBadgeView
 
 class ChatActivity : AppCompatActivity() {
 
@@ -30,9 +30,14 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var mDbRef: DatabaseReference
 
+    private  lateinit var imageBadgeViewMessage: ImageBadgeView
+
     // This valuables are mutable  as users are free to add messages as they wish to
     var senderRoom: String?=null
     var receiverRoom: String?=null
+
+    //check whether user has registered a  new chat
+    private lateinit var mAuth: FirebaseAuth
 
 
 
@@ -44,6 +49,23 @@ class ChatActivity : AppCompatActivity() {
         SendBTN=findViewById(R.id.SendBTN)
         textContainer=findViewById(R.id.textContainer)
         userMsgName=findViewById(R.id.userMsgName)
+        imageBadgeViewMessage=findViewById(R.id.badgeMessage)
+
+        //firebase auth instance
+        mAuth= FirebaseAuth.getInstance()
+
+
+
+
+
+        //update the badge count when firebase register a new  message item
+
+        var messageNotificationCount=0;
+
+        imageBadgeViewMessage.setOnClickListener {
+            imageBadgeViewMessage.badgeValue=0
+
+        }
 
 
 
@@ -67,6 +89,9 @@ class ChatActivity : AppCompatActivity() {
         receiverRoom=senderUid+receiverUid
 
 
+
+
+
         messageList= ArrayList()
 
         val data = ArrayList<Message>()
@@ -85,28 +110,45 @@ class ChatActivity : AppCompatActivity() {
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     //traverse through all  the children in snapshot using the  for loop
+                    //when  the data has changed in the firebase
+                    //only those users who  have a ne message will have a  new message notification
 
                     //clear the data list to avoid duplication
+
+
                     data.clear()
 
                     for (postSnapshot in snapshot.children){
                         val message=postSnapshot.getValue(Message::class.java)
                         data.add(message!!)
 
+
+                        //when  a new message is added to the list
+                        //increment the value of the badgeCount
+                        //store the number of the sent messages an show the count in badge
+                        //only show notifications on the update user id chats
+                        //updates are only showed when specific uid has received an update
+
+
                     }
+
+
+                        messageNotificationCount++
+
+                        imageBadgeViewMessage.badgeValue=messageNotificationCount
+
                     messageAdapter.notifyDataSetChanged()
+
+
+
 
                 }
 
                 override fun onCancelled(error: DatabaseError) {
 
-
                 }
 
-
             })
-
-
 
 
 //write  to firebase
@@ -122,6 +164,8 @@ class ChatActivity : AppCompatActivity() {
                 .setValue(messageOb).addOnSuccessListener {
                     mDbRef.child("chats").child(receiverRoom!!).child("messages").push()
                         .setValue(messageOb)
+
+
                 }
 //clear the text container after sending the message
             textContainer.setText("")

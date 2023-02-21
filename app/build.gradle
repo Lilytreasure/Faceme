@@ -95,6 +95,9 @@ dependencies {
     //pull to refresh layout
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
+    //notification badge
+    implementation("io.github.nikartm:image-support:2.0.0")
+
 
 
 }

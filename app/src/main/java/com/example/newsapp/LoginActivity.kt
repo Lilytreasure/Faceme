@@ -2,12 +2,16 @@ package com.example.newsapp
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.core.view.View
 
 
 class LoginActivity : AppCompatActivity() {
@@ -23,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var mAuth:FirebaseAuth
     private lateinit var BtnLogin: Button
     private  lateinit var dialog: ProgressDialog
+    private lateinit var textError: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +39,9 @@ class LoginActivity : AppCompatActivity() {
         TxtUsername=findViewById(R.id.TxtUsername)
         TxtPassword=findViewById(R.id.TxtPassword)
         BtnLogin=findViewById(R.id.BtnLogin)
+        textError=findViewById(R.id.textError)
+
+
 
 
         //create an instance of firebase auth
@@ -42,6 +50,8 @@ class LoginActivity : AppCompatActivity() {
         dialog = ProgressDialog(this)
 
         //validate username and password
+        //only take variables  that match the  email format
+        //if  the password field is empty catch  the error
         BtnLogin.setOnClickListener {
 
             //add a progress dialog and dispatch it when the request is successfull
@@ -52,17 +62,30 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-
            val email= TxtUsername.text.toString()
            val password= TxtPassword.text.toString()
-            
-            login(email,password)
 
+            if (email.isEmpty() || password.isEmpty()){
+                TxtUsername.setError("email/username is empty")
+                TxtUsername.requestFocus()
+                TxtPassword.setError("password cannot  be empty")
+                TxtPassword.requestFocus()
+                dialog.dismiss()
 
+            }else{
+
+                login(email,password)
+            }
+        }
+        //clear the text Error
+        TxtUsername.setOnClickListener {
+            textError.isVisible=false
+        }
+        TxtPassword.setOnClickListener {
+            textError.isVisible=false
         }
 
-
-
+        
 
         NewUserRegisterBtn.setOnClickListener {
             val intent=Intent(this,RegisterActivity::class.java)
@@ -90,6 +113,8 @@ class LoginActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this, "An error occurred", Toast.LENGTH_SHORT).show()
+                    textError.isVisible=true
+                    dialog.dismiss()
                 }
             }
 

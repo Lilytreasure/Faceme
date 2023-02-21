@@ -2,16 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:icon="@drawable/ic_mesageicon_message_24"
-        android:title="mesageicon"
-        app:showAsAction="always"
-        android:id="@+id/messageic"/>
-    <item
-        android:icon="@drawable/ic_baseline_notifications_none_24"
-        app:showAsAction="always"
-        android:title="Saved News"
-        android:id="@+id/notifyIcon"/>
+<!--    <item-->
+<!--        android:icon="@drawable/ic_mesageicon_message_24"-->
+<!--        android:title="mesageicon"-->
+<!--        app:showAsAction="always"-->
+<!--        android:id="@+id/messageic"-->
+<!--        android:actionLayout="@layout/badge_message"/>-->
+<!--    <item-->
+<!--        android:icon="@drawable/ic_baseline_notifications_none_24"-->
+<!--        app:showAsAction="always"-->
+<!--        android:title="Saved News"-->
+<!--        android:id="@+id/notifyIcon"/>-->
 
 
 

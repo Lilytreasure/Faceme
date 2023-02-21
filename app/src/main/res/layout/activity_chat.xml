@@ -4,25 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatActivity">
-    <androidx.appcompat.widget.Toolbar
+    tools:context=".ChatActivity"
+    android:background="@color/customWhatsapp1">
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/MessageBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/darker_grey"
+        android:background="@color/darker_grey">
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/userMsgName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello user"
+            android:textColor="@color/white"
             android:textAllCaps="false"
             android:drawableLeft="@drawable/ic_person"
             android:layout_gravity="left"
             android:gravity="left"
-            android:drawablePadding="40dp">
+            android:drawablePadding="40dp"
+            android:backgroundTint="@color/darker_grey">
+
 
         </androidx.appcompat.widget.AppCompatButton>
 
-    </androidx.appcompat.widget.Toolbar>
+        <ru.nikartm.support.ImageBadgeView
+            android:id="@+id/badgeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:src="@drawable/ic_mesageicon_message_24"
+            app:ibv_badgeColor="@color/customRed"
+            app:ibv_badgeLimitValue="true"
+            app:ibv_badgeTextColor="#ffffff"
+            app:ibv_badgeTextSize="7sp"
+            app:ibv_badgeTextStyle="bold"
+            app:ibv_fixedBadgeRadius="7dp"
+            app:ibv_maxBadgeValue="99"
+            tools:ibv_badgeValue="101">
+
+        </ru.nikartm.support.ImageBadgeView>
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -33,7 +57,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerChats"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/customWhatsapp1">
         </androidx.recyclerview.widget.RecyclerView>
 
 
@@ -51,7 +76,7 @@
             android:id="@+id/textContainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:hint="Type message"
+            android:hint="Enter message"
             android:layout_weight="15"
             android:background="@drawable/bg">
 

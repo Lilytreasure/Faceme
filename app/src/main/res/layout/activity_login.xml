@@ -73,6 +73,19 @@
                 </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/textError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wrong username/password"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@color/customRed"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+            </TextView>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/BtnLogin"

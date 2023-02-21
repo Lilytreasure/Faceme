@@ -22,7 +22,9 @@
         android:id="@+id/recyclerMessages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/users_contacts">
+        tools:listitem="@layout/users_contacts"
+        android:backgroundTint="@color/customWhatsapp1"
+        android:background="@color/customWhatsapp1">
 
     </androidx.recyclerview.widget.RecyclerView>
 

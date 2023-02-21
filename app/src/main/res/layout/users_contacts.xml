@@ -19,6 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="Dennis Wanja"
+        android:backgroundTint="@color/darker_grey"
+        android:textColor="@color/white"
         android:layout_margin="10dp"
         android:textAllCaps="false" />
     </LinearLayout>

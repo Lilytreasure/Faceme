@@ -19,6 +19,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.adapters.FragmentAdapter
 import com.example.newsapp.architecture.NewsViewModel
+import com.example.newsapp.firebase.data.Message
 import com.example.newsapp.utils.Constants.BS
 //import com.example.newsapp.utils.Constants.BUSINESS
 import com.example.newsapp.utils.Constants.ENTERTAINMENT
@@ -33,6 +34,7 @@ import com.example.newsapp.utils.Constants.TOTAL_NEWS_TAB
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import ru.nikartm.support.ImageBadgeView
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     //Modify the nes container
 
     //Todo --adding  the appliacation crash analytics that will  collect  crash data  in firebase
+    //add  a notification badge to show whwm new items  arrrive-- ie news feed or new messages
 
 
 
@@ -61,6 +64,9 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var  txtNet: TextView
     private lateinit var showError: TextView
     private lateinit var PullRefresher: SwipeRefreshLayout
+    private lateinit var imageBadgeView: ImageBadgeView
+    private lateinit var imageBadgeViewNotify: ImageBadgeView
+
 
 
 
@@ -132,11 +138,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
         }
 
 
@@ -151,6 +152,54 @@ class MainActivity : AppCompatActivity() {
         fragmentAdapter = FragmentAdapter(supportFragmentManager, lifecycle)
         viewPager.adapter = fragmentAdapter
         viewPager.visibility = View.GONE
+
+
+
+
+//        //incerement or decrement badge count
+//        val count=30;
+//        val menuItem:MenuItem
+//         menuItem = menu.(R.id.messageic) as MenuItem
+//        val actionView = menuItem.actionView
+//
+//        actionView?.findViewById<ImageBadgeView>(R.id.cart_menu_icon)?.badgeValue = count
+        val data = ArrayList<Message>()
+        //when a new item is added on the message list increment badge count
+
+
+
+
+
+
+
+        //badge messages
+        val count=40
+        imageBadgeView=findViewById(R.id.cart_menu_icon)
+        imageBadgeView.badgeValue=count
+
+
+        imageBadgeView.setOnClickListener {
+
+            intent = Intent(applicationContext, MessagesActivity::class.java)
+            startActivity(intent)
+            imageBadgeView.badgeValue=0
+
+        }
+
+        //Todo ---Incememt or decrement badge count when  new items arrive
+        //when the user clicks on the item-- it is assumed that all notifications have been read
+
+        //badge notify
+        val notificationCount=1
+        imageBadgeViewNotify=findViewById(R.id.cart_menu_icon2)
+        imageBadgeViewNotify.badgeValue=notificationCount
+
+        imageBadgeViewNotify.setOnClickListener {
+            imageBadgeViewNotify.badgeValue=0
+
+        }
+
+
 
 
 
@@ -212,12 +261,18 @@ class MainActivity : AppCompatActivity() {
                 return super.onOptionsItemSelected(item)
 
             }
-            R.id.messageic->{
-                intent = Intent(applicationContext, MessagesActivity::class.java)
-                startActivity(intent)
-                return super.onOptionsItemSelected(item)
+//            R.id.messageic->{
+//                val count=70
+//                val actionView = item.actionView
+//                actionView?.findViewById<ImageBadgeView>(R.id.cart_menu_icon)?.badgeValue = count
+//
+//                intent = Intent(applicationContext, MessagesActivity::class.java)
+//                startActivity(intent)
+//
+//                return super.onOptionsItemSelected(item)
+//
+//            }
 
-            }
             R.id.menuBar->{
                 intent = Intent(applicationContext, UserProfile::class.java)
                 startActivity(intent)
