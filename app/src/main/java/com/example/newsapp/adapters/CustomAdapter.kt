@@ -1,15 +1,22 @@
 package com.example.newsapp.adapters
 
 import android.content.Context
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.NewsModel
 import com.example.newsapp.R
+import com.example.newsapp.firebase.data.Comments
+import com.example.newsapp.firebase.data.User
 import com.squareup.picasso.Picasso
 import java.time.Duration
 import java.time.Instant
@@ -23,6 +30,11 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
     private lateinit var context: Context
     private lateinit var mClickListener: OnItemClickListener
     private lateinit var mLongClickListener: OnItemLongClickListener
+    private var count:Int=0
+    private lateinit var commentsAdapter: CommentsAdapter
+    val commentsData = ArrayList<Comments>()
+
+    private var sentComment:String=""
 
     init {
         this.notifyDataSetChanged()
@@ -47,13 +59,14 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         context = parent.context
-        return ViewHolder(view, mClickListener, mLongClickListener)
 
+        return ViewHolder(view, mClickListener, mLongClickListener)
 
 
 
         //likebtn
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val newsData = newsList[holder.adapterPosition]
@@ -96,6 +109,52 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
             holder.likeText.text= likes.toString()
 
         }
+        
+
+        holder.comentBTn.setOnClickListener {
+           count++
+
+            val handler=Handler()
+
+            handler.postDelayed({
+                                if (count==1){
+
+                                    holder.commentsContainer.isVisible=true
+                                }else if (count==2){
+
+                                    holder.commentsContainer.isVisible=false
+
+                                }
+                          count=0
+
+            },500)
+
+
+        }
+
+
+        //sending the comment button
+
+        //setting up thr recycler view
+
+
+        holder.sendComment.setOnClickListener {
+            sentComment= holder.commentTextContainer.text.toString()
+            val cmnt=Comments(sentComment,"3");
+            commentsData.add(cmnt)
+
+            for (cmnts in commentsData){
+                println(cmnts)
+            }
+
+
+        }
+
+        holder.recyclerComments.layoutManager= LinearLayoutManager(context)
+        commentsAdapter=CommentsAdapter(context,commentsData)
+        holder.recyclerComments.adapter=commentsAdapter
+        commentsAdapter.notifyDataSetChanged()
+
 
 
     }
@@ -114,6 +173,16 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
         val newsPublicationTime: TextView = itemView.findViewById(R.id.news_publication_time)
         val likeBtn:LinearLayout=itemView.findViewById(R.id.likeBTn)
         val likeText:TextView=itemView.findViewById(R.id.likeText)
+        //find the comment button
+        val comentBTn:LinearLayout=itemView.findViewById(R.id.ComentBTn)
+        val commentsContainer:LinearLayout=itemView.findViewById(R.id.commentsContainer)
+        val sendComment:ImageButton=itemView.findViewById(R.id.SendComment)
+        //find the recyclerView comments
+        val recyclerComments:RecyclerView=itemView.findViewById(R.id.recyclerComments)
+
+        //comment textcontainer
+        val commentTextContainer:EditText=itemView.findViewById(R.id.commentTextContainer)
+
 
         init {
             ItemView.setOnClickListener {

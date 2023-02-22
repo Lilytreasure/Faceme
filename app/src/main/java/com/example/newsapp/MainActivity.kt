@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
     //when  user is typing message module--add  a listener to the text container
     //when  the user makes  an input - the recipient receives a  typing  notification
     //allow user to modify the profile image
+    //adding the comments module
 
 
 

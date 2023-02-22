@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="5dp"
@@ -101,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/like4" />
+                    android:src="@drawable/ic_comment" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -140,14 +141,69 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/commentsContainer"
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerComments"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/BottomLayout"
+                    tools:listitem="@layout/comment_holder">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+                <LinearLayout
+                    android:id="@+id/BottomLayout"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/commentTextContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="comment"
+                        android:layout_weight="15"
+                        android:background="@drawable/bg">
+
+                    </androidx.appcompat.widget.AppCompatEditText>
+
+                    <ImageButton
+                        android:id="@+id/SendComment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_morearrow2">
+
+                    </ImageButton>
+
+
+                </LinearLayout>
 
 
 
 
 
+            </RelativeLayout>
 
+
+        </LinearLayout>
 
     </LinearLayout>
+
 
 
 </RelativeLayout>
