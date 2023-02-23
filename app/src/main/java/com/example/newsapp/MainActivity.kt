@@ -57,6 +57,8 @@ class MainActivity : AppCompatActivity() {
     //when  the user makes  an input - the recipient receives a  typing  notification
     //allow user to modify the profile image
     //adding the comments module
+    //restructuring the comment section --add a comment module and pass the relevant comment modules to
+    //populate the comments
 
 
 
