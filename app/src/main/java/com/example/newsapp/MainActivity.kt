@@ -59,9 +59,8 @@ class MainActivity : AppCompatActivity() {
     //adding the comments module
     //restructuring the comment section --add a comment module and pass the relevant comment modules to
     //populate the comments
-
-
-
+    //while populating the likes, on double click the like is dismissed
+    //each iud is allowed to like  an item once
 
 
     private val newsCategories = arrayOf(
@@ -100,6 +99,11 @@ class MainActivity : AppCompatActivity() {
        txtNet=findViewById(R.id.txtNet)
 
         showError=findViewById(R.id.display_error)
+
+        //prevent swipe between tabs
+        viewPager.isUserInputEnabled=false
+
+
 
         viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
 

@@ -10,6 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/BarTop">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comment/Discussion Room"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+
+        </TextView>
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -19,7 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:layout_above="@id/BottomLayout">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -32,7 +41,7 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="5dp">
                 <TextView
-                    android:id="@+id/news_title"
+                    android:id="@+id/news_titleComent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
@@ -42,15 +51,16 @@
                     android:text="@string/news_placeholder"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
                 <TextView
-                    android:id="@+id/news_publication_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/news_publication_timeComent"
+                    android:layout_width="22dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
                     android:padding="5dp"
-                    android:textSize="14sp"
                     android:textColor="@color/white"
-                    app:drawableStartCompat="@drawable/ic_baseline_access_time_24"
-                    android:layout_gravity="center" />
+                    android:textSize="14sp"
+                    app:drawableStartCompat="@drawable/ic_baseline_access_time_24" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/news_image"
@@ -60,7 +70,7 @@
                     app:cardElevation="0dp">
 
                     <ImageView
-                        android:id="@+id/img"
+                        android:id="@+id/imgComent"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:cropToPadding="true"
@@ -161,25 +171,26 @@
 
 
             </LinearLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerComments"
-                    android:layout_alignParentTop="true"
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/comment_holder">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerComments"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/comment_holder">
+
+                    </androidx.recyclerview.widget.RecyclerView>
 
 
+                </RelativeLayout>
 
 
-            </RelativeLayout>
 
 
         </LinearLayout>

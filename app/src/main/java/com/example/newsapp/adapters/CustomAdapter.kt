@@ -143,9 +143,17 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
         holder.comentBTn.setOnClickListener {
             //will later pass the current view in the container
+            //pass the image and the data in the counter
+
 
             val intent= Intent(context, CommentActivity::class.java)
+            intent.putExtra("headline",newsData.headLine)
+            intent.putExtra("time",newsData.time)
+            intent.putExtra("image",imgUrl)
             context.startActivity(intent)
+
+
+
 
 
         }

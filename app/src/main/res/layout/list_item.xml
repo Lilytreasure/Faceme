@@ -140,66 +140,8 @@
 
 
         </LinearLayout>
-        <RelativeLayout
-            android:id="@+id/CommentContainer"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:clickable="true"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true">
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/BottomLayout">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerComments"
-                    android:layout_alignParentTop="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/comment_holder">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-            </androidx.core.widget.NestedScrollView>
-
-
-
-            <LinearLayout
-                android:id="@+id/BottomLayout"
-                android:orientation="horizontal"
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp">
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/commentTextContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:hint="comment"
-                    android:layout_weight="15"
-                    android:background="@drawable/bg">
-
-                </androidx.appcompat.widget.AppCompatEditText>
-
-                <ImageButton
-                    android:id="@+id/SendComment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_morearrow2">
-
-                </ImageButton>
-
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-
 
     </LinearLayout>
-
 
 
 </RelativeLayout>
