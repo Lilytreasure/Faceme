@@ -121,7 +121,6 @@ class ChatActivity : AppCompatActivity() {
                         val message=postSnapshot.getValue(Message::class.java)
                         data.add(message!!)
 
-
                         //when  a new message is added to the list
                         //increment the value of the badgeCount
                         //store the number of the sent messages an show the count in badge
@@ -129,7 +128,6 @@ class ChatActivity : AppCompatActivity() {
                         //updates are only showed when specific uid has received an update
                         //the  count is populated in the receiver uid
                         //from the sender end the count is not incremented
-
 
 
                     }
@@ -140,8 +138,6 @@ class ChatActivity : AppCompatActivity() {
                         imageBadgeViewMessage.badgeValue=messageNotificationCount
 
                     messageAdapter.notifyDataSetChanged()
-
-
 
 
                 }

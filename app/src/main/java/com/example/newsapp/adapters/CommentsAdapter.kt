@@ -24,6 +24,7 @@ class CommentsAdapter (val context: Context, val commentsList: ArrayList<Comment
         val commentsData = commentsList[position]
 
         holder.sentComment.text=commentsData.comment
+        holder.commentSenderName.text=commentsData.senderId
 
     }
 
@@ -32,16 +33,19 @@ class CommentsAdapter (val context: Context, val commentsList: ArrayList<Comment
     }
 
 
-
     class commentViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //map the items in the sent message layout
 
+        //comment text holder
+
         val sentComment=itemView.findViewById<TextView>(R.id.commentTxt)
+
+        //comment sender holder
+        val commentSenderName=itemView.findViewById<TextView>(R.id.commentSenderName)
+
 
 
     }
-
-
 
 
 }

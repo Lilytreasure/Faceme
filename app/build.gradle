@@ -22,8 +22,9 @@ android {
 //        Please ensure you have a valid API KEY for https://newsapi.org/
 //        to use this app
 //        A valid key will need to be entered in gradle.properties file
-        buildConfigField("String", "API_KEY", "\"65afc9f134de402e93905639c0098cfc\"")
+        buildConfigField("String", "API_KEY", "\"56e124db77fe4dc19111833fa29a2647\"")
         //65afc9f134de402e93905639c0098cfc-mine
+        //also mine-56e124db77fe4dc19111833fa29a2647
         //initial-5a3e054de1834138a2fbc4a75ee69053
 
     }
@@ -97,9 +98,6 @@ dependencies {
 
     //notification badge
     implementation "io.github.nikartm:image-support:2.0.0"
-
-
-
 
 
 

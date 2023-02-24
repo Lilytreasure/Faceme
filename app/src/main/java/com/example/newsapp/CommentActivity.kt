@@ -6,10 +6,14 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.adapters.CommentsAdapter
+import com.example.newsapp.adapters.ContactsAdapter
 import com.example.newsapp.firebase.data.Comments
+import com.example.newsapp.firebase.data.Message
+import com.example.newsapp.firebase.data.User
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import java.time.Duration
 import java.time.Instant
@@ -32,6 +36,12 @@ class CommentActivity : AppCompatActivity() {
     private lateinit var imgComent: ImageView
     private lateinit var news_publication_timeComent: TextView
 
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDbRef: DatabaseReference
+    private lateinit var userList: ArrayList<User>
+
+    private var comentSender:String=""
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +56,16 @@ class CommentActivity : AppCompatActivity() {
         news_titleComent=findViewById(R.id.news_titleComent)
         imgComent=findViewById(R.id.imgComent)
         news_publication_timeComent=findViewById(R.id.news_publication_timeComent)
+
+
+        //firebase modules
+        mAuth= FirebaseAuth.getInstance()
+
+        val senderUid=FirebaseAuth.getInstance().currentUser?.uid
+
+
+        mDbRef=FirebaseDatabase.getInstance().getReference()
+       // val sendername=FirebaseAuth.getInstance().currentUser?.email
 
 
         val headline=intent.getStringExtra("headline")
@@ -76,23 +96,138 @@ class CommentActivity : AppCompatActivity() {
 
        val data = ArrayList<Comments>()
 
+        val nameData=ArrayList<User>()
+
+
+
+        commentsAdapter= CommentsAdapter(this@CommentActivity,data)
+        recyclerComments.adapter=commentsAdapter
+
+
+
+
+
        // comments= ArrayList()
-        recyclerComments.layoutManager= LinearLayoutManager(this)
+       // recyclerComments.layoutManager= LinearLayoutManager(this)
+
+
+        //add the comments firebase on a different node and fetch the comments made on a certain item
+
+
+
+
+         //add the  comments on a spare node identified  by the uid
+        //add the name of the user
+        //det the name of the user who submitted the comment
+        mDbRef.child("credentials").addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                //traverse through the items in the database to sort out individual items
+                for (postSnapshot in snapshot.children){
+                    //clear the list before adding values to avoid duplication when
+                    //data set is changed
+
+                    nameData.clear()
+                    val currentUser=postSnapshot.getValue(User::class.java)
+
+                    nameData.add(currentUser!!)
+                    if (currentUser.uid==senderUid){
+
+                        comentSender=currentUser.name.toString()
+
+//                        for (nameslisted in nameData){
+//                            comentSender= nameslisted.name.toString()
+//
+//                        }
+
+                       // println(comentSender+ "name of the sender ")
+
+                    }
+
+
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+
+
+
+        //add the name of the comment sender and the comment
+        //put the comments in firebase
 
 
      SendComment.setOnClickListener {
+         //obtain the user name
+
+
 
          val commentD: String=commentTextContainer.text.toString()
-         val data1=Comments(commentD,"2")
-         data.add(data1)
+//         val data1=Comments(commentD,"2")
+//         data.add(data1)
+
+         val commentOb=Comments(commentD,comentSender)
+
+         try {
+
+             mDbRef.child("Comments").child(senderUid!!).child("sentComment").push().setValue(commentOb)
+
+             //clear the comment text container when the comment is successfully sent
+
+             commentTextContainer.setText("")
 
 
-         commentsAdapter= CommentsAdapter(this@CommentActivity,data)
-         recyclerComments.adapter=commentsAdapter
-         commentsAdapter.notifyDataSetChanged()
+         }catch (e: Exception){
+
+             println("an error occured")
+
+         }
+
+
+//
+//         commentsAdapter= CommentsAdapter(this@CommentActivity,data)
+//         recyclerComments.adapter=commentsAdapter
+//         commentsAdapter.notifyDataSetChanged()
 
 
      }
+        //Add the comments from firebase in the comments container
+        //add  data--in the  Comments list
+
+        mDbRef.child("Comments").child("sentComment")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    //traverse through all  the children in snapshot using the  for loop
+                    //when  the data has changed in the firebase
+                    //only those users who  have a ne message will have a  new message notification
+
+                    //clear the data list to avoid duplication
+
+                    data.clear()
+
+                    for (postSnapshot in snapshot.children){
+                        val comments=postSnapshot.getValue(Comments::class.java)
+                        data.add(comments!!)
+
+                    }
+
+                    commentsAdapter.notifyDataSetChanged()
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
+
+
 
 
 

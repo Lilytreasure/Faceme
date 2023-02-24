@@ -58,8 +58,6 @@ class RegisterActivity : AppCompatActivity() {
 
         }
 
-
-
     }
 
     private fun signUp( email: String,name: String, password: String) {
