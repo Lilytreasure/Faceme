@@ -19,6 +19,11 @@ import com.example.newsapp.CommentActivity
 import com.example.newsapp.NewsModel
 import com.example.newsapp.R
 import com.example.newsapp.firebase.data.Comments
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import java.time.Duration
 import java.time.Instant
@@ -36,6 +41,11 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 //    private  lateinit var commentsAdapter: CommentsAdapter
 //    private lateinit var comments: ArrayList<Comments>
 //    val data = ArrayList<Comments>()
+
+    private lateinit var mDbRef: DatabaseReference
+    private val commentId:String="01c"
+    private var commentsAmmout: Int=0
+    val data = ArrayList<Comments>()
 
 
 
@@ -154,8 +164,6 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
 
 
-
-
         }
 
 
@@ -183,6 +191,61 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 //
 //        }
 //
+//populate  the number of comments in the main view
+
+        mDbRef=FirebaseDatabase.getInstance().getReference()
+
+
+        try {
+            //have a common comment id that display comments to all users \
+
+            mDbRef.child("Comments").child(commentId).child("sentComment")
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        //traverse through all  the children in snapshot using the  for loop
+                        //when  the data has changed in the firebase
+                        //only those users who  have a ne message will have a  new message notification
+
+                        //clear the data list to avoid duplication
+
+                        data.clear()
+                        for (postSnapshot in snapshot.children) {
+                            val comments = postSnapshot.getValue(Comments::class.java)
+                            if (comments!!.newsId==newsData.headLine){
+
+                                data.add(comments!!)
+
+                                commentsAmmout=data.size
+
+                                holder.commentsQuantity.text=commentsAmmout.toString()
+
+                            }
+
+
+
+                            println("data from " + comments)
+
+                        }
+
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                })
+
+        }catch (e:Exception){
+
+            println("error fetching comments")
+        }
+
+
+
+
+
+
 
 
     }
@@ -209,6 +272,12 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 //        val recyclerComments:RecyclerView=itemView.findViewById(R.id.recyclerComments)
 //        val commentTextContainer:EditText=itemView.findViewById(R.id.commentTextContainer)
 //        val SendComment:ImageButton=itemView.findViewById(R.id.SendComment)
+
+
+        //comment number textview
+        val commentsQuantity:TextView=itemView.findViewById(R.id.commentsQuantity)
+
+
 
 
 

@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.adapters.CommentsAdapter
 import com.example.newsapp.adapters.ContactsAdapter
@@ -41,6 +42,12 @@ class CommentActivity : AppCompatActivity() {
     private lateinit var userList: ArrayList<User>
 
     private var comentSender:String=""
+    private val commentId:String="01c"
+    private var commentsAmmout: Int=0
+
+    private lateinit var numberOfComments: TextView
+
+
 
 
 
@@ -56,6 +63,10 @@ class CommentActivity : AppCompatActivity() {
         news_titleComent=findViewById(R.id.news_titleComent)
         imgComent=findViewById(R.id.imgComent)
         news_publication_timeComent=findViewById(R.id.news_publication_timeComent)
+        numberOfComments=findViewById(R.id.numberOfComments)
+
+
+
 
 
         //firebase modules
@@ -71,6 +82,8 @@ class CommentActivity : AppCompatActivity() {
         val headline=intent.getStringExtra("headline")
         val picture=intent.getStringExtra("image")
         val timepublished=intent.getStringExtra("time")
+
+        val headlinetext: String=headline.toString()
 
         //use the local time to calculate the time difference
 
@@ -93,17 +106,15 @@ class CommentActivity : AppCompatActivity() {
             .into(imgComent)
 
 
-
+     //comments data
        val data = ArrayList<Comments>()
 
         val nameData=ArrayList<User>()
 
-
+        recyclerComments.layoutManager= LinearLayoutManager(this)
 
         commentsAdapter= CommentsAdapter(this@CommentActivity,data)
-        recyclerComments.adapter=commentsAdapter
-
-
+        //recyclerComments.adapter=commentsAdapter
 
 
 
@@ -172,11 +183,12 @@ class CommentActivity : AppCompatActivity() {
 //         val data1=Comments(commentD,"2")
 //         data.add(data1)
 
-         val commentOb=Comments(commentD,comentSender)
+
+         val commentOb=Comments(commentD,comentSender,headlinetext)
 
          try {
 
-             mDbRef.child("Comments").child(senderUid!!).child("sentComment").push().setValue(commentOb)
+             mDbRef.child("Comments").child(commentId).child("sentComment").push().setValue(commentOb)
 
              //clear the comment text container when the comment is successfully sent
 
@@ -199,37 +211,57 @@ class CommentActivity : AppCompatActivity() {
      }
         //Add the comments from firebase in the comments container
         //add  data--in the  Comments list
+        try {
+            //have a common comment id that display comments to all users \
 
-        mDbRef.child("Comments").child("sentComment")
-            .addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    //traverse through all  the children in snapshot using the  for loop
-                    //when  the data has changed in the firebase
-                    //only those users who  have a ne message will have a  new message notification
+            mDbRef.child("Comments").child(commentId).child("sentComment")
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        //traverse through all  the children in snapshot using the  for loop
+                        //when  the data has changed in the firebase
+                        //only those users who  have a ne message will have a  new message notification
 
-                    //clear the data list to avoid duplication
+                        //clear the data list to avoid duplication
 
-                    data.clear()
+                        data.clear()
+                        for (postSnapshot in snapshot.children) {
+                            val comments = postSnapshot.getValue(Comments::class.java)
+                            if (comments!!.newsId==headlinetext){
 
-                    for (postSnapshot in snapshot.children){
-                        val comments=postSnapshot.getValue(Comments::class.java)
-                        data.add(comments!!)
+                                data.add(comments!!)
+
+                                commentsAmmout=data.size
+
+                                numberOfComments.text=commentsAmmout.toString()
+
+                            }
+
+
+
+
+                            println("data from " + comments)
+
+                        }
+
+
+
+                        commentsAdapter = CommentsAdapter(this@CommentActivity, data)
+                        recyclerComments.adapter = commentsAdapter
+
+                        commentsAdapter.notifyDataSetChanged()
 
                     }
 
-                    commentsAdapter.notifyDataSetChanged()
+                    override fun onCancelled(error: DatabaseError) {
 
-                }
+                    }
 
-                override fun onCancelled(error: DatabaseError) {
+                })
 
-                }
+        }catch (e:Exception){
 
-            })
-
-
-
-
+            println("error fetching comments")
+        }
 
         //end of the onCreate method
     }
