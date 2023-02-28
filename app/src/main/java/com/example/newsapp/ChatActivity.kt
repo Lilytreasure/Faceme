@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.adapters.MessageAdapter
 import com.example.newsapp.firebase.data.Message
+import com.example.newsapp.firebase.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import ru.nikartm.support.ImageBadgeView
@@ -56,11 +57,9 @@ class ChatActivity : AppCompatActivity() {
 
 
 
-
-
         //update the badge count when firebase register a new  message item
 
-        var messageNotificationCount=0;
+        var messageNotificationCount=0
 
         imageBadgeViewMessage.setOnClickListener {
             imageBadgeViewMessage.badgeValue=0
@@ -74,7 +73,11 @@ class ChatActivity : AppCompatActivity() {
         userMsgName.text=userId
 
         //this is the subject who is going  to receive the message
+        //gets  the uid of the currently selected receiver
+
         val receiverUid=intent.getStringExtra("uid")
+
+
         //add the SenderUid
         val senderUid=FirebaseAuth.getInstance().currentUser?.uid
         //instantiate the database reference
@@ -93,6 +96,7 @@ class ChatActivity : AppCompatActivity() {
         messageList= ArrayList()
 
         val data = ArrayList<Message>()
+        val data2=ArrayList<User>()
 
 
         //set the adapter  to the recyclerView
@@ -112,8 +116,6 @@ class ChatActivity : AppCompatActivity() {
                     //only those users who  have a ne message will have a  new message notification
 
                     //clear the data list to avoid duplication
-
-
 
                     data.clear()
 
@@ -147,6 +149,7 @@ class ChatActivity : AppCompatActivity() {
                 }
 
             })
+
 
 
 //write  to firebase

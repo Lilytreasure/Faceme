@@ -46,6 +46,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
     private val commentId:String="01c"
     private var commentsAmmout: Int=0
     val data = ArrayList<Comments>()
+    var  hoursAgo=""
 
 
 
@@ -110,11 +111,33 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
             val date = " " + time?.substring(0, time.indexOf('T', 0))
             holder.newsPublicationTime.text = date
         } else {
-            val currentTimeInHours = Instant.now().atZone(ZoneId.of("Asia/Kolkata"))
-            val newsTimeInHours = Instant.parse(time).atZone(ZoneId.of("Asia/Kolkata"))
+
+            //if the hours exceed 24 hours use a day ago\
+            val maxDay: Long=24
+
+            val currentTimeInHours = Instant.now().atZone(ZoneId.of("Africa/Nairobi"))
+            val newsTimeInHours = Instant.parse(time).atZone(ZoneId.of("Africa/Nairobi"))
             val hoursDifference = Duration.between(currentTimeInHours, newsTimeInHours)
-            val hoursAgo = " " + hoursDifference.toHours().toString().substring(1) + " hour ago"
+            hoursAgo = " " + hoursDifference.toHours().toString().substring(1) + " hour ago"
+
             holder.newsPublicationTime.text = hoursAgo
+
+
+//            if (hoursDifference.toHours() >maxDay){
+//                val dayAgo: String="A day and"
+//                val exceedinghours=hoursDifference.toHours()-maxDay
+//                val ago: String="hrs Ago"
+//                val setday: String=dayAgo+ exceedinghours + ago
+//
+//                holder.newsPublicationTime.text =setday
+//
+//
+//            }else if (hoursDifference.toHours()<maxDay){
+//
+//
+//            }
+
+
         }
 
         var likes=0
@@ -158,7 +181,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
             val intent= Intent(context, CommentActivity::class.java)
             intent.putExtra("headline",newsData.headLine)
-            intent.putExtra("time",newsData.time)
+            intent.putExtra("time",hoursAgo)
             intent.putExtra("image",imgUrl)
             context.startActivity(intent)
 

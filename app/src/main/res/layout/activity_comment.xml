@@ -54,13 +54,18 @@
 
                 <TextView
                     android:id="@+id/news_publication_timeComent"
-                    android:layout_width="22dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     android:padding="5dp"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/ic_baseline_access_time_24" />
+                    android:textSize="15sp"
+                    app:drawableLeftCompat="@drawable/ic_baseline_access_time_24">
+
+                </TextView>
+
+
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/news_image"

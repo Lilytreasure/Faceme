@@ -81,21 +81,17 @@ class CommentActivity : AppCompatActivity() {
 
         val headline=intent.getStringExtra("headline")
         val picture=intent.getStringExtra("image")
+
         val timepublished=intent.getStringExtra("time")
 
         val headlinetext: String=headline.toString()
 
         //use the local time to calculate the time difference
 
-        val currentTimeInHours = Instant.now().atZone(ZoneId.of("Asia/Kolkata"))
-        val newsTimeInHours = Instant.parse(timepublished).atZone(ZoneId.of("Asia/Kolkata"))
-        val hoursDifference = Duration.between(currentTimeInHours, newsTimeInHours)
-        val hoursAgo = " " + hoursDifference.toHours().toString().substring(1) + " hour ago"
-
 
         news_titleComent.text=headline.toString()
 
-        news_publication_timeComent.text=hoursAgo
+        news_publication_timeComent.text=timepublished.toString()
 
         //loading the image
         Picasso.get()

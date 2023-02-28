@@ -17,9 +17,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
+import com.example.newsapp.adapters.ContactsAdapter
 import com.example.newsapp.adapters.FragmentAdapter
 import com.example.newsapp.architecture.NewsViewModel
 import com.example.newsapp.firebase.data.Message
+import com.example.newsapp.firebase.data.User
 import com.example.newsapp.utils.Constants.BS
 //import com.example.newsapp.utils.Constants.BUSINESS
 import com.example.newsapp.utils.Constants.ENTERTAINMENT
@@ -34,6 +36,8 @@ import com.example.newsapp.utils.Constants.TOTAL_NEWS_TAB
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import ru.nikartm.support.ImageBadgeView
 
 
@@ -61,6 +65,9 @@ class MainActivity : AppCompatActivity() {
     //populate the comments
     //while populating the likes, on double click the like is dismissed
     //each iud is allowed to like  an item once
+    //updating the message badge --listen to firebase and get the number of messages
+    //update the count depending on the number of messages
+    //Todo-- adding an notifier  to alert user when a new message arrives
 
 
     private val newsCategories = arrayOf(
@@ -80,6 +87,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var PullRefresher: SwipeRefreshLayout
     private lateinit var imageBadgeView: ImageBadgeView
     private lateinit var imageBadgeViewNotify: ImageBadgeView
+
+    private lateinit var mDbRef: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
+
+    private lateinit var messageList: ArrayList<Message>
+    private lateinit var userList: ArrayList<User>
+
+
+
+
+
+    val dataMessage = ArrayList<Message>()
+
+    //user data
+    var userData=ArrayList<User>()
+
+    var senderRoom: String?=null
+    var receiverRoom: String?=null
+
+
+    var receiverUid=""
+    val senderUid= FirebaseAuth.getInstance().currentUser?.uid
+
+
+
+
 
 
 
@@ -192,7 +225,20 @@ class MainActivity : AppCompatActivity() {
         //badge messages
         val count=2
         imageBadgeView=findViewById(R.id.cart_menu_icon)
-        imageBadgeView.badgeValue=count
+
+
+        //update the message badge show  the number of the new messages on the badge
+
+
+        mDbRef= FirebaseDatabase.getInstance().getReference()
+        mAuth= FirebaseAuth.getInstance()
+
+//listen to firebase and get the number of the messages
+        //increment  the count  of the message badge
+       // userList=ArrayList()
+
+      updateMessageBadge()
+
 
 
         imageBadgeView.setOnClickListener {
@@ -216,9 +262,107 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        //get  the receiver uid from firebase
+        userList= ArrayList()
+
+
+        //gett the messages
+
 
 
         //oncreate method ends here
+
+    }
+
+    private fun updateMessageBadge() {
+
+       // val currentuser=userData[position]
+
+       // val  receiverUid=currentuser.uid
+
+        mDbRef.child("credentials").addValueEventListener(object : ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                userData.clear()
+
+                //traverse through the items in the database to sort out individual items
+                for (postSnapshot in snapshot.children){
+                    //clear the list before adding values to avoid duplication when
+                    //data set is changed
+                    val currentUser=postSnapshot.getValue(User::class.java)
+
+                    if (mAuth.currentUser?.uid  != currentUser?.uid){
+
+                        userData.add(currentUser!!)
+
+                       // imageBadgeView.badgeValue=userData.size
+
+                       // receiverUid=userData.get(0).toString()
+
+//                        for (datas in userData){
+//
+//                            receiverUid=datas.uid.toString()
+//                        }
+
+
+
+                        //  receiverRoom=senderUid+receiverUid
+
+
+                        imageBadgeView.badgeValue=userData.size
+
+
+                    }
+
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+
+
+
+
+
+        senderRoom=receiverUid+senderUid
+
+     //   senderRoom=receiverUid+senderUid
+
+        mDbRef.child("chats").child(senderRoom!!).child("messages")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    //traverse through all  the children in snapshot using the  for loop
+                    //when  the data has changed in the firebase
+                    //only those users who  have a ne message will have a  new message notification
+
+                    //clear the data list to avoid duplication
+                    dataMessage.clear()
+
+                    for (postSnapshot in snapshot.children){
+                        val message=postSnapshot.getValue(Message::class.java)
+                        dataMessage.add(message!!)
+                       //imageBadgeView.badgeValue=dataMessage.size
+
+
+                    }
+
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
+
+
+
 
     }
 
