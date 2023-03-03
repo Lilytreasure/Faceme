@@ -8,6 +8,7 @@ import com.example.newsapp.NewsModel
 
 class NewsViewModel : ViewModel() {
 
+
     private var newsLiveData: MutableLiveData<List<NewsModel>>? = null
 
     //get news from API

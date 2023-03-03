@@ -29,6 +29,7 @@ class BusinessFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_business, container, false)
+
         val newsData: MutableList<NewsModel> = MainActivity.businessNews
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager =
@@ -55,7 +56,6 @@ class BusinessFragment : Fragment() {
             }
         })
 
-        // Ignore
         adapter.setOnItemLongClickListener(object : CustomAdapter.OnItemLongClickListener {
             override fun onItemLongClick(position: Int) = Unit
         })

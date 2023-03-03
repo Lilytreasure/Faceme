@@ -69,6 +69,11 @@ class MainActivity : AppCompatActivity() {
     //update the count depending on the number of messages
     //Todo-- adding an notifier  to alert user when a new message arrives
 
+    //Restructure the sender and  receiver room to access t the  dat in all rooms
+    // populate the message badge according to the   number  of the messages that are not read yet
+
+
+
 
     private val newsCategories = arrayOf(
         HOME, BS,
@@ -87,6 +92,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var PullRefresher: SwipeRefreshLayout
     private lateinit var imageBadgeView: ImageBadgeView
     private lateinit var imageBadgeViewNotify: ImageBadgeView
+
+    //The badge view to the shop items
+    private lateinit var imageBadgeViewMarketplace: ImageBadgeView
+
+
+
+
+
 
     private lateinit var mDbRef: DatabaseReference
     private lateinit var mAuth: FirebaseAuth
@@ -109,10 +122,6 @@ class MainActivity : AppCompatActivity() {
 
     var receiverUid=""
     val senderUid= FirebaseAuth.getInstance().currentUser?.uid
-
-
-
-
 
 
 
@@ -236,6 +245,22 @@ class MainActivity : AppCompatActivity() {
 //listen to firebase and get the number of the messages
         //increment  the count  of the message badge
        // userList=ArrayList()
+
+        //The Marketplace badge view
+        val shopcount=20
+        imageBadgeViewMarketplace=findViewById(R.id.shopBadge)
+        imageBadgeViewMarketplace.badgeValue=shopcount
+
+        imageBadgeViewMarketplace.setOnClickListener {
+            //navigate  to marketplace
+            intent = Intent(applicationContext,MarketPlace::class.java)
+            startActivity(intent)
+            imageBadgeViewMarketplace.badgeValue=0
+
+
+        }
+
+
 
       updateMessageBadge()
 

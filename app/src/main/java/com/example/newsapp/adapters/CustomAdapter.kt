@@ -19,6 +19,7 @@ import com.example.newsapp.CommentActivity
 import com.example.newsapp.NewsModel
 import com.example.newsapp.R
 import com.example.newsapp.firebase.data.Comments
+import com.example.newsapp.firebase.data.Likes
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -37,7 +38,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
     private lateinit var context: Context
     private lateinit var mClickListener: OnItemClickListener
     private lateinit var mLongClickListener: OnItemLongClickListener
-//    private var count:Int=0
+   private var count:Int=0
 //    private  lateinit var commentsAdapter: CommentsAdapter
 //    private lateinit var comments: ArrayList<Comments>
 //    val data = ArrayList<Comments>()
@@ -47,6 +48,8 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
     private var commentsAmmout: Int=0
     val data = ArrayList<Comments>()
     var  hoursAgo=""
+
+    val likesData=ArrayList<Likes>()
 
 
 
@@ -143,8 +146,42 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
         var likes=0
 
         holder.likeBtn.setOnClickListener {
-            likes++
-            holder.likeText.text= likes.toString()
+         likes++
+
+            //update the likes count on firebase and on the container
+
+          when(likes){
+
+              1-> holder.likeText.text=likes.toString()
+
+              else->{
+
+                  holder.likeText.text=""
+                  likes=0
+              }
+
+          }
+
+
+
+//add the likes to firbase and populate the total number of likes
+
+            var numberOfLikesPerid=  holder.likeText.text.toString()
+
+
+            //add  the likes to firebase and  display the number of like son the liked container
+            //display the numbe rof likes from firebase
+
+
+
+
+
+
+
+
+
+
+
 
         }
 
