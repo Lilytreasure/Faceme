@@ -22,6 +22,10 @@ Retrofit - Retrofit is a REST client for Java/ Kotlin and Android by Square inc 
 
 GSON - JSON Parser,used to parse requests on the data layer for Entities and understands Kotlin non-nullable and default parameters.<br>
 
+Google firebase<br>
+Glide 
+
+
 
 
 
