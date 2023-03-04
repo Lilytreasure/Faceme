@@ -1,10 +1,11 @@
-# Caching data  From an API<br>
+# FaceMe android Application<br>
+Build in progress<br>
+Design pattern-MVVM<br>
 
 A social aplication<br>
+This is a  sample Facebook aplication  that enables users to comment and like news items,users can even send inbox messages on each other <br>
 
-Build in progress<br>
-
-Design pattern-MVVM<br>
+API--https://newsapi.org/
 
 This is is a social aplication that enables users to intercat with each other by sending messages and by sending comments and likes on the posts that impress them<br>
 Users can save posts to view later  and can also send inbox messages to the users they wish to
