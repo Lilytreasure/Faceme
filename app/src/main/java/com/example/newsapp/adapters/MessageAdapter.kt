@@ -33,10 +33,7 @@ class MessageAdapter(val context: Context,val messageList: ArrayList<Message>) :
     private lateinit var mAuth: FirebaseAuth
   private  lateinit var user:ArrayList<User>
 
-
-
-
-
+  
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         //attach the layout according to the viewHolder
@@ -99,9 +96,6 @@ class MessageAdapter(val context: Context,val messageList: ArrayList<Message>) :
 
             //listen to firebase and delete the selected message by the message id
             //get the uid from  the  database
-
-
-
             //get the message
 
 
@@ -135,6 +129,7 @@ class MessageAdapter(val context: Context,val messageList: ArrayList<Message>) :
                     }
 
                 })
+
 
             Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show()
 

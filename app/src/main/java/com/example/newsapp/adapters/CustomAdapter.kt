@@ -51,10 +51,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
     val likesData=ArrayList<Likes>()
 
-
-
-
-
+    
     init {
         this.notifyDataSetChanged()
     }
@@ -97,7 +94,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
         if (imgUrl.isNullOrEmpty()) {
             Picasso.get()
-                .load( R.drawable.nopic)
+                .load( R.drawable.news)
                 .fit()
                 .centerCrop()
                 .into(holder.image)
@@ -106,7 +103,7 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
                 .load(imgUrl)
                 .fit()
                 .centerCrop()
-                .error(R.drawable.nopic)
+                .error(R.drawable.news)
                 .into(holder.image)
         }
 
@@ -123,22 +120,31 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
             val hoursDifference = Duration.between(currentTimeInHours, newsTimeInHours)
             hoursAgo = " " + hoursDifference.toHours().toString().substring(1) + " hour ago"
 
-            holder.newsPublicationTime.text = hoursAgo
+            //if the hours exceed 24 hours -indicate as a data and the additional hours
+            //computation cannot be between strings
+            val tmData=hoursDifference.toHours().toString().substring(1)
+
+             //  handle  the event of more than a day
+            //use the time duration to render time in//days,hrs,weeks,months ,year
+            val dayData=0
+
+            holder.newsPublicationTime.text =hoursAgo
+
+            if(tmData.toLong() < maxDay){
+                holder.newsPublicationTime.text =hoursAgo
+
+            }else if (tmData.toLong()> maxDay){
+                val tMdifference=tmData.toLong()-maxDay
+
+                holder.newsPublicationTime.text ="1 day and " +tMdifference+ " hrs ago"
+
+            }else if (tmData.toLong()==maxDay){
+
+                holder.newsPublicationTime.text ="1 day ago"
+
+            }
 
 
-//            if (hoursDifference.toHours() >maxDay){
-//                val dayAgo: String="A day and"
-//                val exceedinghours=hoursDifference.toHours()-maxDay
-//                val ago: String="hrs Ago"
-//                val setday: String=dayAgo+ exceedinghours + ago
-//
-//                holder.newsPublicationTime.text =setday
-//
-//
-//            }else if (hoursDifference.toHours()<maxDay){
-//
-//
-//            }
 
 
         }
@@ -149,6 +155,8 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
          likes++
 
             //update the likes count on firebase and on the container
+            //if  the id has a like in a news article populate the number of  counts
+             //when the like is withdrawn   decrement the number of likes from firebase
 
           when(likes){
 
@@ -171,16 +179,6 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
             //add  the likes to firebase and  display the number of like son the liked container
             //display the numbe rof likes from firebase
-
-
-
-
-
-
-
-
-
-
 
 
         }
@@ -303,11 +301,6 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
 
 
-
-
-
-
-
     }
 
     override fun getItemCount(): Int {
@@ -336,12 +329,6 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
         //comment number textview
         val commentsQuantity:TextView=itemView.findViewById(R.id.commentsQuantity)
-
-
-
-
-
-
 
 
 
