@@ -25,4 +25,14 @@ object Constants {
     const val DEFAULT_SWIPER_DELAY = 4000L
 
     const val INITIAL_POSITION = 0
+
+    //under   the constant variabless  add the country codes and the respective label
+
+    const val USA="us"
+    const val India="in"
+    const val Kenya="ke"
+
+
+
+
 }

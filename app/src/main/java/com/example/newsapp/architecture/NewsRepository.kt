@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.newsapp.BuildConfig
 import com.example.newsapp.MainActivity
 import com.example.newsapp.NewsModel
+import com.example.newsapp.api.Coutrylist
 import com.example.newsapp.api.NewsApi
 import com.example.newsapp.api.NewsDataFromJson
 import com.example.newsapp.api.RetrofitHelper
@@ -20,6 +21,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NewsRepository {
+
+    //add the list of countries from the country list
+    private lateinit var coutryList: ArrayList<Coutrylist>
+     private var newc=""
+
+    //get the name of the country passed from the selection from the drop down  menu
+    //check whether the selected country is in the list of  the supported countries
+
 
     companion object {
 
@@ -55,6 +64,12 @@ class NewsRepository {
 
     // get news from API
     fun getNewsApiCall(category: String?): MutableLiveData<List<NewsModel>> {
+        coutryList= ArrayList()
+        for (datas in coutryList){
+             newc=datas.countryCode.toString()
+
+        }
+
 
         val newsList = MutableLiveData<List<NewsModel>>()
 
@@ -62,6 +77,8 @@ class NewsRepository {
 
                 //add a custom entry to fetch all the countries in the api
             //add the api key registered in newsapi.org
+                //add a method to enter user custo country
+
             .getNews("us", category, BuildConfig.API_KEY) //put your api key here
         //cast  the country names in a string and place them using a spinner
         //allow the user to modify country data

@@ -11,14 +11,20 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.adapters.ContactsAdapter
 import com.example.newsapp.adapters.FragmentAdapter
+import com.example.newsapp.api.Coutrylist
 import com.example.newsapp.architecture.NewsViewModel
 import com.example.newsapp.firebase.data.Message
 import com.example.newsapp.firebase.data.User
@@ -28,11 +34,13 @@ import com.example.newsapp.utils.Constants.ENTERTAINMENT
 import com.example.newsapp.utils.Constants.GENERAL
 import com.example.newsapp.utils.Constants.HEALTH
 import com.example.newsapp.utils.Constants.HOME
+import com.example.newsapp.utils.Constants.India
 //import com.example.newsapp.utils.Constants.HOME2
 import com.example.newsapp.utils.Constants.SCIENCE
 import com.example.newsapp.utils.Constants.SPORTS
 import com.example.newsapp.utils.Constants.TECHNOLOGY
 import com.example.newsapp.utils.Constants.TOTAL_NEWS_TAB
+import com.example.newsapp.utils.Constants.USA
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -71,6 +79,9 @@ class MainActivity : AppCompatActivity() {
 
     //Restructure the sender and  receiver room to access t the  dat in all rooms
     // populate the message badge according to the   number  of the messages that are not read yet
+    //add  the array list of new to fetch the desired news
+    //From the list of the predefined news check whether the country is supported
+    //or set a predefined number of  the supported countries only
 
 
 
@@ -87,14 +98,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fragmentAdapter: FragmentAdapter
     private lateinit var shimmerLayout: ShimmerFrameLayout
     private var totalRequestCount = 0
-    private  lateinit var  txtNet: TextView
+    private  lateinit var  txtNet: Button
     private lateinit var showError: TextView
     private lateinit var PullRefresher: SwipeRefreshLayout
     private lateinit var imageBadgeView: ImageBadgeView
     private lateinit var imageBadgeViewNotify: ImageBadgeView
 
     //The badge view to the shop items
-    private lateinit var imageBadgeViewMarketplace: ImageBadgeView
+  //  private lateinit var imageBadgeViewMarketplace: ImageBadgeView
 
 
 
@@ -122,6 +133,13 @@ class MainActivity : AppCompatActivity() {
 
     var receiverUid=""
     val senderUid= FirebaseAuth.getInstance().currentUser?.uid
+
+
+    //setting up the spinner to  fetch  the names of the country
+    private lateinit var MainSpinner: Spinner
+
+    //add an arraylist to pass the country name
+    private lateinit var countrylist: ArrayList<Coutrylist>
 
 
 
@@ -164,12 +182,14 @@ class MainActivity : AppCompatActivity() {
                     val offline="offline"
                     txtNet.text=offline
                     txtNet.setTextColor(Color.parseColor("#ed4f3f"))
+                    txtNet.isVisible=true
 
 
                 }else{
                     val online="online"
                     txtNet.text=online
                     txtNet.setTextColor(Color.parseColor("#298932"))
+                    txtNet.isVisible=false
 
                 }
 
@@ -180,6 +200,13 @@ class MainActivity : AppCompatActivity() {
 
 
         ///log error to the user  when internet connection is  not available
+        //hide the network notifier on click
+        txtNet.setOnClickListener {
+            txtNet.isVisible=false
+        }
+
+
+
 
 
         if (!isNetworkAvailable(applicationContext)){
@@ -215,6 +242,53 @@ class MainActivity : AppCompatActivity() {
         viewPager.visibility = View.GONE
 
 
+        //setting up the spinner
+        MainSpinner=findViewById(R.id.MainSpinner)
+        var countryNames= arrayOf("ke","us","in")
+
+        var countryData= ArrayList<Coutrylist>()
+        countrylist= ArrayList()
+
+
+
+
+        val arrayAdapter=ArrayAdapter(this,android.R.layout.simple_spinner_item,countryNames)
+        MainSpinner.adapter=arrayAdapter
+
+        MainSpinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //pass the country to the country request params
+                //pass
+
+
+                val itemselected:String=MainSpinner.getItemAtPosition(position).toString()
+                val countrlistnew=Coutrylist(itemselected)
+               countryData.add(countrlistnew)
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                //set a default country
+
+                val countrlistnew2=Coutrylist("us")
+                countryData.add(countrlistnew2)
+
+
+            }
+
+
+        }
+
+
+
+
+
+
 
 
 //        //incerement or decrement badge count
@@ -224,6 +298,7 @@ class MainActivity : AppCompatActivity() {
 //        val actionView = menuItem.actionView
 //
 //        actionView?.findViewById<ImageBadgeView>(R.id.cart_menu_icon)?.badgeValue = count
+
         val data = ArrayList<Message>()
         //when a new item is added on the message list increment badge count
 
@@ -247,18 +322,18 @@ class MainActivity : AppCompatActivity() {
        // userList=ArrayList()
 
         //The Marketplace badge view
-        val shopcount=20
-        imageBadgeViewMarketplace=findViewById(R.id.shopBadge)
-        imageBadgeViewMarketplace.badgeValue=shopcount
-
-        imageBadgeViewMarketplace.setOnClickListener {
-            //navigate  to marketplace
-            intent = Intent(applicationContext,MarketPlace::class.java)
-            startActivity(intent)
-            imageBadgeViewMarketplace.badgeValue=0
-
-
-        }
+//        val shopcount=20
+//        imageBadgeViewMarketplace=findViewById(R.id.shopBadge)
+//        imageBadgeViewMarketplace.badgeValue=shopcount
+//
+//        imageBadgeViewMarketplace.setOnClickListener {
+//            //navigate  to marketplace
+//            intent = Intent(applicationContext,MarketPlace::class.java)
+//            startActivity(intent)
+//            imageBadgeViewMarketplace.badgeValue=0
+//
+//
+//        }
 
 
 

@@ -225,6 +225,22 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
         }
 
 
+            //share the  news
+        //share the news url
+        holder.ShareBTn.setOnClickListener {
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.putExtra(Intent.EXTRA_TEXT, "Hello, Check this news Item : " + newsData.url)
+            intent.type = "text/plain"
+            context.startActivity(Intent.createChooser(intent, "Share with :"))
+
+        }
+
+
+
+
+
+
         //handle the comments populator
       //  holder.recyclerComments.layoutManager= LinearLayoutManager(context)
 
@@ -329,6 +345,11 @@ class CustomAdapter(private var newsList: List<NewsModel>) :
 
         //comment number textview
         val commentsQuantity:TextView=itemView.findViewById(R.id.commentsQuantity)
+
+
+        //share the news items
+
+        val ShareBTn:LinearLayout=itemView.findViewById(R.id.ShareBTn)
 
 
 
