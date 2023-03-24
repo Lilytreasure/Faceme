@@ -18,9 +18,10 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 
 
  <table>
+
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/78819932/227462909-1f33ff6e-d86b-489b-acba-d869375b7867.png" alt="login" style="width:300px;height:700px;"></td>
-      <td><img src="https://user-images.githubusercontent.com/78819932/227463127-acc2fa0b-f516-4ad6-97c8-ba6a4743c384.png" alt="register" style="width:300px;height:700px;"></td>
+    <td><img src="https://user-images.githubusercontent.com/78819932/227473293-6a4f2ff8-9527-42a5-8b51-ba0759582127.png" alt="home" style="width:300px;height:700px;"></td>
+      <td><img src="https://user-images.githubusercontent.com/78819932/227473346-8817a572-7ba9-4107-8d3a-4f9bcb7c3de8.png" alt="comments" style="width:300px;height:700px;"></td>
       
   </tr>
   
