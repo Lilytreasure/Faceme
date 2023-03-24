@@ -9,20 +9,42 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 
  <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/78819932/227462909-1f33ff6e-d86b-489b-acba-d869375b7867.png" alt="login" style="width:200px;height:500px;"></td>
+    <td><img src="https://user-images.githubusercontent.com/78819932/227462909-1f33ff6e-d86b-489b-acba-d869375b7867.png" alt="login" style="width:300px;height:700px;"></td>
       <td><img src="https://user-images.githubusercontent.com/78819932/227463127-acc2fa0b-f516-4ad6-97c8-ba6a4743c384.png" alt="register" style="width:300px;height:700px;"></td>
-       <td><img src="https://user-images.githubusercontent.com/78819932/227463381-313eaebd-3f03-42a5-ae41-b3c2b011e8b7.png" alt="home" style="width:300px;height:700px;"></td>
-    
+     
+   
+  </tr>
+  
+</table><br>
+
+<table>
+  <tr>
  
+       <td><img src="https://user-images.githubusercontent.com/78819932/227463381-313eaebd-3f03-42a5-ae41-b3c2b011e8b7.png" alt="home" style="width:300px;height:700px;"></td>
+   
+    <td><img src="https://user-images.githubusercontent.com/78819932/227465591-5d59a322-bb3e-4a2f-8a44-0c21e12b040d.png" alt="chat" style="width:300px;height:700px;"></td>
+   
+   
+ 
+  </tr>
+  
+</table><br
+            
+             <table>
+  <tr>
+
+   <td><img src="https://user-images.githubusercontent.com/78819932/227470985-37e7190e-d8c0-4b95-851b-390c2d6560ca.png" alt="chat" style="width:300px;height:700px;"></td>  
+   
   </tr>
   
 </table><br>
 
 
 
+
  <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/78819932/227465591-5d59a322-bb3e-4a2f-8a44-0c21e12b040d.png" alt="chat" style="width:300px;height:700px;"></td>
+   
       <td><img src="https://user-images.githubusercontent.com/78819932/227465897-11a7b811-f039-4db8-b557-69a19b17ad5b.png" alt="contacts" style="width:300px;height:700px;"></td>
        <td><img src="https://user-images.githubusercontent.com/78819932/227466148-d26037c8-d971-412b-874c-073876c90da0.png" alt="comments" style="width:300px;height:700px;"></td>
    
@@ -43,6 +65,7 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 
 
 
+![likedhm](https://user-images.githubusercontent.com/78819932/227470985-37e7190e-d8c0-4b95-851b-390c2d6560ca.png)
 
 
 API--https://newsapi.org/
