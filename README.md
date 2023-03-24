@@ -9,7 +9,7 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 
  <table align="center">
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/78819932/227462909-1f33ff6e-d86b-489b-acba-d869375b7867.png" alt="login" style="width:270px;height:700px;"></td>
+    <td><img src="https://user-images.githubusercontent.com/78819932/227462909-1f33ff6e-d86b-489b-acba-d869375b7867.png" alt="login" style="width:300px;height:700px;"></td>
       <td><img src="https://user-images.githubusercontent.com/78819932/227463127-acc2fa0b-f516-4ad6-97c8-ba6a4743c384.png" alt="register" style="width:270px;height:700px;"></td>
        <td><img src="https://user-images.githubusercontent.com/78819932/227463381-313eaebd-3f03-42a5-ae41-b3c2b011e8b7.png" alt="home" style="width:270px;height:700px;"></td>
     
