@@ -11,8 +11,7 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
   <tr>
     <td><img src="https://user-images.githubusercontent.com/78819932/227462909-1f33ff6e-d86b-489b-acba-d869375b7867.png" alt="login" style="width:300px;height:700px;"></td>
       <td><img src="https://user-images.githubusercontent.com/78819932/227463127-acc2fa0b-f516-4ad6-97c8-ba6a4743c384.png" alt="register" style="width:300px;height:700px;"></td>
-     
-   
+      
   </tr>
   
 </table><br>
@@ -23,14 +22,14 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
        <td><img src="https://user-images.githubusercontent.com/78819932/227463381-313eaebd-3f03-42a5-ae41-b3c2b011e8b7.png" alt="home" style="width:300px;height:700px;"></td>
    
     <td><img src="https://user-images.githubusercontent.com/78819932/227465591-5d59a322-bb3e-4a2f-8a44-0c21e12b040d.png" alt="chat" style="width:300px;height:700px;"></td>
-   
-   
- 
+
   </tr>
   
 </table><br
             
-             <table>
+            
+            
+   <table>
   <tr>
 
    <td><img src="https://user-images.githubusercontent.com/78819932/227470985-37e7190e-d8c0-4b95-851b-390c2d6560ca.png" alt="chat" style="width:300px;height:700px;"></td>  
@@ -65,7 +64,6 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 
 
 
-![likedhm](https://user-images.githubusercontent.com/78819932/227470985-37e7190e-d8c0-4b95-851b-390c2d6560ca.png)
 
 
 API--https://newsapi.org/
