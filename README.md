@@ -31,12 +31,15 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 </table><br>
 
 
-
-
-
-
-
-
+ <table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/78819932/227467278-4002a568-ce58-4bcd-b208-6bffdc7c2a90.png" alt="settings" style="width:300px;height:700px;"></td>
+      <td><img src="https://user-images.githubusercontent.com/78819932/227467645-c62385f7-b647-44d8-86fe-86682110516c.png" alt="saved" style="width:300px;height:700px;"></td>
+     
+   
+  </tr>
+  
+</table><br>
 
 
 
