@@ -25,7 +25,7 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 
   </tr>
   
-</table><br
+</table><br>
             
             
             
