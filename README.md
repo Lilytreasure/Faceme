@@ -30,20 +30,6 @@ This is a  sample Facebook aplication  that enables users to comment and like ne
 
 
 
-<table>
-
-  <tr>
-    
-      <td><img src="https://user-images.githubusercontent.com/78819932/227473346-8817a572-7ba9-4107-8d3a-4f9bcb7c3de8.png" alt="lkdhome" style="width:300px;height:700px;"></td>
-      
-  </tr>
-  
-</table><br>
-
-
-
-
-
  <table>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/78819932/227467278-4002a568-ce58-4bcd-b208-6bffdc7c2a90.png" alt="settings" style="width:300px;height:700px;"></td>
